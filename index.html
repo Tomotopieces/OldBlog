@@ -148,6 +148,172 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/09/22/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tomoto">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tomoto">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/22/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">设计模式-桥接模式与装饰器模式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-22 17:23:51 / 修改时间：20:11:23" itemprop="dateCreated datePublished" datetime="2020-09-22T17:23:51+08:00">2020-09-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>两者都用于处理类数量爆炸的情况。</p>
+<h2 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h2><p>将抽象类作为具体实现类与功能接口的桥。</p>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>当类需要在多个方面进行拓展时，使用桥接模式。<br /></p>
+<h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><pre><code>Bridged Pattern:
+
+Product       Dimension       ConcreteDimension
+   |              |                   |
+   | &lt;&gt;---------- | &lt;|............... |
+   |              |                   |
+   |          Dimension               |
+   |                                  |
+   |       ConcretePruduct            |
+   |              |                   |
+   | &lt;|---------- | &lt;&gt;--------------- |
+   |              |                   |
+Product    ConcretePruduct    ConcreteDimension</code></pre>
+<p><em>ConcreteProduct</em> 与 <em>ConcreteDimension</em> 根据具体情况，可能是组合或者聚合关系。</p>
+<br />
+
+<h2 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h2><p>众所周知，青蛙不会飞。但是我们可以用 <em>FrogFlyDecorator</em> 让青蛙飞起来。<br /></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Frog flyFrog = <span class="keyword">new</span> FrogFlyDecorator(frog);</span><br></pre></td></tr></table></figure>
+
+<h3 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h3><p>为产品添加新的功能时，使用装饰器模式。<br /><br>在装饰器中为产品添加新功能。</p>
+<h3 id="类图-1"><a href="#类图-1" class="headerlink" title="类图"></a>类图</h3><pre><code>Decorator Pattern:
+
+Product    Decorator    ConcreteDecorator
+   |           |                |
+   | &lt;|----&lt;*&gt; | &lt;|------------ |
+   |           |                |
+   |       Decoretor    ConcreteDecorator
+   |
+   |       ConcretePruduct
+   |              |
+   | &lt;|---------- |
+   |              |
+Product    ConcretePruduct</code></pre>
+<p><em>Decorator</em> 泛化并聚合了一个抽象的 <em>Product</em> ， <em>ConcreteDecorator</em> 为 <em>Product</em> 添加新功能或修改原有功能。<br /><br>泛化的目的是为了能嵌套，做到类似这样的效果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> FrogTalk(</span><br><span class="line">    <span class="keyword">new</span> FrogRunDecorator(</span><br><span class="line">        <span class="keyword">new</span> FrogFlyDecorator(frog)));</span><br></pre></td></tr></table></figure>
+
+<p>这是一只能说话能跑步能飞的青蛙。</p>
+<p>手抓饼加料的过程可以同理。</p>
+<br />
+
+<h3 id="二者区别"><a href="#二者区别" class="headerlink" title="二者区别"></a>二者区别</h3><ol>
+<li>桥接模式将相关的事物组合或聚合在一起；装饰器模式为已经存在的事物添加新的功能。<br /></li>
+<li>桥接模式中的产品实现类与接口实现类继承自不同的类/接口，没有主次之分；装饰器模式的产品实现类与装饰器类都继承自抽象产品类，产品为主，装饰器为次。<br /></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/09/21/%E6%97%A5%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tomoto">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tomoto">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/21/%E6%97%A5%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/" class="post-title-link" itemprop="url">日记（四）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-21 19:18:47 / 修改时间：19:43:51" itemprop="dateCreated datePublished" datetime="2020-09-21T19:18:47+08:00">2020-09-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>来了。<br><br /></p>
+<h2 id="折磨人的房子"><a href="#折磨人的房子" class="headerlink" title="折磨人的房子"></a>折磨人的房子</h2><p>整理宿舍的时候，一个女老师来建议说到外面租宿舍。也是，毕竟这里太挤了，不到二十平的地方塞了两个上下铺。所以和新认识的两个室友出去找房子了。<br /><br>五八同城···这东西真没用过，没想到竟然还能用来找房子。看了好多家，都在福师大的南边，太远了。看了一家福师大东边的什么眉心园，走了半天，是红砖房，房间也不够大，白跑一趟。<br /><br>嗐，电动车是真的骑不来，感觉太怪了。<br /><br>一路上一个中介公司的一直在微信和我沟通，帮我找房子···找了好多地方，最后他带我们到了万福中心北边的蔗洲滨江苑的一间，和其他人合租，还行。<br /><br>我们租了一间卧室，蛮大的，把中间最大的床挪一挪然后再塞两张折叠床就可以了。这间的环境也比培训学校这边的宿舍好多了。<br /><br>最后定下来 1100 / 月，水费 30 / 人 / 月，电费一度一块钱。这次交了 3300 + 200 + 35 * 6 + 550 ，分别是押金与首月租金，预缴水电费，这个月剩下的 9 天免去 3 天后的租金，中介的佣金。中介的佣金有点贵啊，月租金的 50% ，还好只交一次。回来后又买了床垫被芯竹席等，前后两次生活用品购买加起来花了 271 。<br /><br>明天开始搬过去，虽然刚买的折叠床还没到···先过去再说吧。刚来福州第一件事就是再搬一次家，绝了。就这导致今天走了 1.5w+ 的步数。<br /><br><br /></p>
+<h2 id="培训学校"><a href="#培训学校" class="headerlink" title="培训学校"></a>培训学校</h2><p>一直以为廖老师是女的，没想到是男的。<br /><br>万福中心二楼的面不好吃。<br /><br>地址在万福中心2栋6层。感觉也不是很大，没多少班级。<br /><br>早上9点到中午12点，下午14点到几点我给忘了。18点半到21点晚自习。周六白天也有自习，周六下午和周日放假。出行需要汇报班主任。<br /></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/09/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -171,10 +337,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-09-18 11:04:54 / 修改时间：11:50:27" itemprop="dateCreated datePublished" datetime="2020-09-18T11:04:54+08:00">2020-09-18</time>
+              <time title="创建时间：2020-09-18 11:04:54" itemprop="dateCreated datePublished" datetime="2020-09-18T11:04:54+08:00">2020-09-18</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-21 19:17:34" itemprop="dateModified" datetime="2020-09-21T19:17:34+08:00">2020-09-21</time>
+              </span>
 
           
 
@@ -944,160 +1116,6 @@ C &lt;*&gt;-- Y</code></pre>
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/09/03/%E6%97%A5%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tomoto">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tomoto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/03/%E6%97%A5%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" class="post-title-link" itemprop="url">日记（二）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-03 22:54:27" itemprop="dateCreated datePublished" datetime="2020-09-03T22:54:27+08:00">2020-09-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-09 19:40:56" itemprop="dateModified" datetime="2020-09-09T19:40:56+08:00">2020-09-09</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>面试完了，一问三不知，真的丢了舅舅的脸。估计还是要找个地方培训，福州···哎。</p>
-<p>每日焦虑，无所事事，没有学习动力，嗐。</p>
-<p>总是在等着别人来救我，但是从来没有人来救我，家里人也只是给了我力所能及的帮助。老是在明明还有机会挽回的情况下放任不管，一手导致了最糟糕的结果。</p>
-<p>我不想泯然众人啊，谁想呢。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/09/01/%E7%94%B1%E7%AC%94%E8%AF%95%E7%BB%93%E6%9E%9C%E5%BC%95%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tomoto">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tomoto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/01/%E7%94%B1%E7%AC%94%E8%AF%95%E7%BB%93%E6%9E%9C%E5%BC%95%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83/" class="post-title-link" itemprop="url">由笔试结果引发的思考</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-01 13:35:41" itemprop="dateCreated datePublished" datetime="2020-09-01T13:35:41+08:00">2020-09-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-03 22:54:45" itemprop="dateModified" datetime="2020-09-03T22:54:45+08:00">2020-09-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>昨天，也就是刚搭好博客的同一天的晚上，笔试的邮件来了，也就点进去做了。结果很糟，满分79分，我只拿了32分···然后就想了很多，搞得彻夜难眠。</p>
-<hr>
-<h2 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h2><ol>
-<li>有很大程度的自大。明知道自己是个自学的半吊子，明知什么都是只学了皮毛，但有一种莫名其妙的自信，就很离谱。</li>
-<li>经常因一些没意义的事情而分散精力。搭这个博客真的有意义吗？搭博客的时间用来学其他学到一半的东西是否会更好？写这篇博文还是日记的东西的时间用来学习时候会更好？我不知道···</li>
-<li>确实要放下一些对工作帮助不大或者没有帮助的东西，先开始学工作上需要的技能了。</li>
-</ol>
-<hr>
-<h2 id="欠缺"><a href="#欠缺" class="headerlink" title="欠缺"></a>欠缺</h2><p>就这次笔试考察的技能而言，全都不会。</p>
-<ol>
-<li>Java</li>
-<li>Java EE</li>
-<li>Jqueury</li>
-<li>WEB</li>
-<li>Linux Bash</li>
-<li>Spring</li>
-<li>JSP</li>
-<li>Struts</li>
-<li>DBS</li>
-<li>数据结构</li>
-<li>算法</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1167,7 +1185,7 @@ C &lt;*&gt;-- Y</code></pre>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
