@@ -20,20 +20,21 @@
     var CONFIG = {"hostname":"tomotopieces.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="来了。 折磨人的房子整理宿舍的时候，一个女老师来建议说到外面租宿舍。也是，毕竟这里太挤了，不到二十平的地方塞了两个上下铺。所以和新认识的两个室友出去找房子了。五八同城···这东西真没用过，没想到竟然还能用来找房子。看了好多家，都在福师大的南边，太远了。看了一家福师大东边的什么眉心园，走了半天，是红砖房，房间也不够大，白跑一趟。嗐，电动车是真的骑不来，感觉太怪了。一路上一个中介公司的一直在微信和我沟">
+  <meta name="description" content="访问者模式违反了 迪米特法则 和 依赖倒转原则 的奇怪模式，目的是将数据结构与数据操作分离，降低耦合性，但没有将访问主体与访问者解耦。这部分的解耦交给其他的设计模式。  访问者只需要关心我访问了什么，这给我来带了什么样的影响。被访问的只需要关心是谁访问了我，给我带来了什么影响。他们之间是如何产生这样访问的，并不需要关心。 by chaos  应用场景 适用于数据结构相对稳定算法又易变化的系统，若系">
 <meta property="og:type" content="article">
-<meta property="og:title" content="日记（四）">
-<meta property="og:url" content="http://tomotopieces.github.io/2020/09/21/%E6%97%A5%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/index.html">
+<meta property="og:title" content="设计模式-访问者模式与观察者模式">
+<meta property="og:url" content="http://tomotopieces.github.io/2020/09/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Tomoto">
-<meta property="og:description" content="来了。 折磨人的房子整理宿舍的时候，一个女老师来建议说到外面租宿舍。也是，毕竟这里太挤了，不到二十平的地方塞了两个上下铺。所以和新认识的两个室友出去找房子了。五八同城···这东西真没用过，没想到竟然还能用来找房子。看了好多家，都在福师大的南边，太远了。看了一家福师大东边的什么眉心园，走了半天，是红砖房，房间也不够大，白跑一趟。嗐，电动车是真的骑不来，感觉太怪了。一路上一个中介公司的一直在微信和我沟">
+<meta property="og:description" content="访问者模式违反了 迪米特法则 和 依赖倒转原则 的奇怪模式，目的是将数据结构与数据操作分离，降低耦合性，但没有将访问主体与访问者解耦。这部分的解耦交给其他的设计模式。  访问者只需要关心我访问了什么，这给我来带了什么样的影响。被访问的只需要关心是谁访问了我，给我带来了什么影响。他们之间是如何产生这样访问的，并不需要关心。 by chaos  应用场景 适用于数据结构相对稳定算法又易变化的系统，若系">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-09-21T11:18:47.000Z">
-<meta property="article:modified_time" content="2020-09-21T11:43:51.387Z">
+<meta property="article:published_time" content="2020-09-24T01:53:49.000Z">
+<meta property="article:modified_time" content="2020-09-24T03:32:26.696Z">
 <meta property="article:author" content="Tomoto">
-<meta property="article:tag" content="日记">
+<meta property="article:tag" content="开发学习">
+<meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://tomotopieces.github.io/2020/09/21/%E6%97%A5%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/">
+<link rel="canonical" href="http://tomotopieces.github.io/2020/09/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/">
 
 
 <script id="page-configurations">
@@ -46,7 +47,7 @@
   };
 </script>
 
-  <title>日记（四） | Tomoto</title>
+  <title>设计模式-访问者模式与观察者模式 | Tomoto</title>
   
 
 
@@ -154,7 +155,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/09/21/%E6%97%A5%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/09/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -167,7 +168,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          日记（四）
+          设计模式-访问者模式与观察者模式
         </h1>
 
         <div class="post-meta">
@@ -178,7 +179,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-09-21 19:18:47 / 修改时间：19:43:51" itemprop="dateCreated datePublished" datetime="2020-09-21T19:18:47+08:00">2020-09-21</time>
+              <time title="创建时间：2020-09-24 09:53:49 / 修改时间：11:32:26" itemprop="dateCreated datePublished" datetime="2020-09-24T09:53:49+08:00">2020-09-24</time>
             </span>
 
           
@@ -192,9 +193,74 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>来了。<br><br /></p>
-<h2 id="折磨人的房子"><a href="#折磨人的房子" class="headerlink" title="折磨人的房子"></a>折磨人的房子</h2><p>整理宿舍的时候，一个女老师来建议说到外面租宿舍。也是，毕竟这里太挤了，不到二十平的地方塞了两个上下铺。所以和新认识的两个室友出去找房子了。<br /><br>五八同城···这东西真没用过，没想到竟然还能用来找房子。看了好多家，都在福师大的南边，太远了。看了一家福师大东边的什么眉心园，走了半天，是红砖房，房间也不够大，白跑一趟。<br /><br>嗐，电动车是真的骑不来，感觉太怪了。<br /><br>一路上一个中介公司的一直在微信和我沟通，帮我找房子···找了好多地方，最后他带我们到了万福中心北边的蔗洲滨江苑的一间，和其他人合租，还行。<br /><br>我们租了一间卧室，蛮大的，把中间最大的床挪一挪然后再塞两张折叠床就可以了。这间的环境也比培训学校这边的宿舍好多了。<br /><br>最后定下来 1100 / 月，水费 30 / 人 / 月，电费一度一块钱。这次交了 3300 + 200 + 35 * 6 + 550 ，分别是押金与首月租金，预缴水电费，这个月剩下的 9 天免去 3 天后的租金，中介的佣金。中介的佣金有点贵啊，月租金的 50% ，还好只交一次。回来后又买了床垫被芯竹席等，前后两次生活用品购买加起来花了 271 。<br /><br>明天开始搬过去，虽然刚买的折叠床还没到···先过去再说吧。刚来福州第一件事就是再搬一次家，绝了。就这导致今天走了 1.5w+ 的步数。<br /><br><br /></p>
-<h2 id="培训学校"><a href="#培训学校" class="headerlink" title="培训学校"></a>培训学校</h2><p>一直以为廖老师是女的，没想到是男的。<br /><br>万福中心二楼的面不好吃。<br /><br>地址在万福中心2栋6层。感觉也不是很大，没多少班级。<br /><br>早上9点到中午12点，下午14点到几点我给忘了。18点半到21点晚自习。周六白天也有自习，周六下午和周日放假。出行需要汇报班主任。<br /></p>
+        <h2 id="访问者模式"><a href="#访问者模式" class="headerlink" title="访问者模式"></a>访问者模式</h2><p>违反了 <em>迪米特法则</em> 和 <em>依赖倒转原则</em> 的奇怪模式，目的是将数据结构与数据操作分离，降低耦合性，但没有将访问主体与访问者解耦。这部分的解耦交给其他的设计模式。</p>
+<blockquote>
+<p>访问者只需要关心我访问了什么，这给我来带了什么样的影响。被访问的只需要关心是谁访问了我，给我带来了什么影响。他们之间是如何产生这样访问的，并不需要关心。</p>
+<p>by chaos</p>
+</blockquote>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><blockquote>
+<p>适用于数据结构相对稳定算法又易变化的系统，若系统数据结构对象易于变化，则不适合使用访问者模式。</p>
+</blockquote>
+<h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><pre><code>Visitor Pattern:
+
+Visitor    Client    ObjectStructure             Element
+   |         |              |                       |
+   | -----&lt;&gt; | &lt;&gt;---------- | &lt;*&gt;------------------ |
+   |         |              |                       |
+   |       Client    ObjectStructure                |
+   |                                                |
+   |       ConcreteVisitor    ConcreteElement       |
+   |              |                  |              |
+   | &lt;|.......... |                  | ..........|&gt; |
+   |              |                  |              |
+Visitor    ConcreteVisitor    ConcreteElement    Element
+
+---
+ObjectStructure
+- elements: Element
++ accept(Visitor)
+---
+&lt;&lt;interface&gt;&gt;
+Element
++ accept(Visitor)
+---
+&lt;&lt;interface&gt;&gt;
+Visitor
++ visit(ConcreteElement)</code></pre>
+<br />
+
+<h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><p>感觉上它的另一个名字 <em>发布-订阅模式</em> 更为恰当，因为数据是被观察主体主动提供的。<br /><br>一个发布者 <em>Observable</em> 对多个订阅者 <em>Observer</em> 。<br /><br>也违反了 <em>迪米特法则</em> 。（迪米特：？）</p>
+<h3 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h3><ol>
+<li>当一个抽象的多个实现依赖另一个抽象的实例，需要得到更新通知。</li>
+<li>可设计成链式触发机制。</li>
+</ol>
+<h3 id="类图-1"><a href="#类图-1" class="headerlink" title="类图"></a>类图</h3><pre><code>Observable    Observer    ConcreteObserver
+    |            |               |
+    | &lt;&gt;-----&lt;*&gt; | &lt;|........... |
+    |            |               |
+    |         Observer    ConcreteObserver
+    |
+    |         Subject
+    |            |
+    | &lt;|-------- |
+    |            |
+Observable    Subject
+
+---
+&lt;&lt;abstract&gt;&gt;
+Observable
+- List&lt;Observer&gt;
++ addObserver(Observer)
++ deleteObserver(Observer)
++ notifyObservers()
+---
+&lt;&lt;interface&gt;&gt;
+Observer
++ update(Observable)</code></pre>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ol>
+<li>访问者模式可能会对主体进行修改，观察者模式一般不会。</li>
+<li>访问者模式主动获取主体信息，观察者模式被动接受主体信息。</li>
+</ol>
 
     </div>
 
@@ -204,7 +270,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%97%A5%E8%AE%B0/" rel="tag"># 日记</a>
+              <a href="/tags/%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/" rel="tag"># 开发学习</a>
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"># 设计模式</a>
           </div>
 
         
@@ -213,12 +280,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/09/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/" rel="prev" title="设计模式-建造者模式">
-      <i class="fa fa-chevron-left"></i> 设计模式-建造者模式
+    <a href="/2020/09/22/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/" rel="prev" title="设计模式-桥接模式与装饰器模式">
+      <i class="fa fa-chevron-left"></i> 设计模式-桥接模式与装饰器模式
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/09/22/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/" rel="next" title="设计模式-桥接模式与装饰器模式">
-      设计模式-桥接模式与装饰器模式 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/09/24/%E3%80%90%E7%BF%BB%E8%AF%91%E3%80%91LWJGL%20%E6%95%99%E7%A8%8B/" rel="next" title="【翻译】LWJGL 教程">
+      【翻译】LWJGL 教程 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -278,7 +345,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%98%E7%A3%A8%E4%BA%BA%E7%9A%84%E6%88%BF%E5%AD%90"><span class="nav-number">1.</span> <span class="nav-text">折磨人的房子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%B9%E8%AE%AD%E5%AD%A6%E6%A0%A1"><span class="nav-number">2.</span> <span class="nav-text">培训学校</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">访问者模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.1.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9B%BE"><span class="nav-number">1.2.</span> <span class="nav-text">类图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">观察者模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="nav-number">2.1.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9B%BE-1"><span class="nav-number">2.2.</span> <span class="nav-text">类图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">区别</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tomotopieces.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="source: http:&#x2F;&#x2F;thecodinguniverse.com&#x2F;lwjgl-workspace&#x2F; LWJGL Workspace点击观看 Youtube 上的相应视频。 本篇教程中你将学会如何配置 LWJGL workspace 用于编译与运行 LWJGL 程序。 下载必要文件从这里下载最新版[1]的 LWJGL 和这里下载最新版的 “slick_util” jar 格式文件。解压 zi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【翻译】LWJGL Workspace">
+<meta property="og:url" content="http://tomotopieces.github.io/2020/09/24/%E3%80%90%E7%BF%BB%E8%AF%91%E3%80%91LWJGL%20Workspace/index.html">
+<meta property="og:site_name" content="Tomoto">
+<meta property="og:description" content="source: http:&#x2F;&#x2F;thecodinguniverse.com&#x2F;lwjgl-workspace&#x2F; LWJGL Workspace点击观看 Youtube 上的相应视频。 本篇教程中你将学会如何配置 LWJGL workspace 用于编译与运行 LWJGL 程序。 下载必要文件从这里下载最新版[1]的 LWJGL 和这里下载最新版的 “slick_util” jar 格式文件。解压 zi">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tomotopieces.github.io/images/Project-Folder.png">
+<meta property="og:image" content="http://tomotopieces.github.io/images/Project-Properties.png">
+<meta property="og:image" content="http://tomotopieces.github.io/images/Java-Build-Path.png">
+<meta property="og:image" content="http://tomotopieces.github.io/images/Display-Test.png">
+<meta property="article:published_time" content="2020-09-24T08:03:33.000Z">
+<meta property="article:modified_time" content="2020-09-24T09:07:56.080Z">
+<meta property="article:author" content="Tomoto">
+<meta property="article:tag" content="开发学习">
+<meta property="article:tag" content="LWJGL">
+<meta property="article:tag" content="翻译">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tomotopieces.github.io/images/Project-Folder.png">
+
+<link rel="canonical" href="http://tomotopieces.github.io/2020/09/24/%E3%80%90%E7%BF%BB%E8%AF%91%E3%80%91LWJGL%20Workspace/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>【翻译】LWJGL Workspace | Tomoto</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Tomoto</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">小龙宫</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/tomotopieces" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/09/24/%E3%80%90%E7%BF%BB%E8%AF%91%E3%80%91LWJGL%20Workspace/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tomoto">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tomoto">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【翻译】LWJGL Workspace
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-24 16:03:33 / 修改时间：17:07:56" itemprop="dateCreated datePublished" datetime="2020-09-24T16:03:33+08:00">2020-09-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>source: <a target="_blank" rel="noopener" href="http://thecodinguniverse.com/lwjgl-workspace/">http://thecodinguniverse.com/lwjgl-workspace/</a></strong><br><br /><br><br /></p>
+<h1 id="LWJGL-Workspace"><a href="#LWJGL-Workspace" class="headerlink" title="LWJGL Workspace"></a>LWJGL Workspace</h1><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=0v56I5UWrYY">点击观看 Youtube 上的相应视频。</a></p>
+<p>本篇教程中你将学会如何配置 LWJGL workspace 用于编译与运行 LWJGL 程序。</p>
+<h2 id="下载必要文件"><a href="#下载必要文件" class="headerlink" title="下载必要文件"></a><strong>下载必要文件</strong></h2><p>从<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/java-game-lib/files/">这里</a>下载最新版<sup>[1]</sup>的 LWJGL 和<a target="_blank" rel="noopener" href="https://github.com/OskarVeerhoek/YouTube-tutorials/blob/master/lib/slick-util.jar?raw=true">这里</a>下载最新版的 “slick_util” jar 格式文件。解压 zip 格式文件，将所有的文件与文件夹放在同一目录下。安装 Eclipse ，<a target="_blank" rel="noopener" href="http://www.eclipse.org/downloads/">这里</a>下载 “Classic” 或 “IDE for Java Developers” 版本。将下载的 Eclipse 放在一个你拥有读写权限的目录下（即，不要放在 Program Files 或 Applications 中）。</p>
+<h2 id="在-LWJGL-workspace-中创建项目"><a href="#在-LWJGL-workspace-中创建项目" class="headerlink" title="在 LWJGL workspace 中创建项目"></a><strong>在 LWJGL workspace 中创建项目</strong></h2><p>点击运行 Eclipse 。选择工作空间文件夹，其中存放你的所有 Java 项目。点击菜单 “File” ， “New” ， 点击 “Java Project” 并为这个 LWJGL 项目起名。这个项目将存放在先前指定的文件夹内。</p>
+<h2 id="添加-library-文件"><a href="#添加-library-文件" class="headerlink" title="添加 library 文件"></a><strong>添加 library 文件</strong></h2><p>打开包含了 “src” 和 “bin” 目录的项目目录。添加一个叫作 “lib” 目录，其中包含两个分别叫 “natives” 和 “jars” 的目录。现在的项目目录应包含如下文件夹</p>
+<pre><code>- lib
+- src
+- bin
+- lib/natives
+- lib/jars</code></pre>
+<p>将 “lwjgl.jar” 和 “lwjgl_util.jar” 文件从解压包中与 “slick_util.jar” 文件一同放入 “lib/jars” 目录下。将 zip 文件中适用于当前操作系统的本机文件移动到 “lib/natives” 目录下。</p>
+<p><img src="/images/Project-Folder.png" alt="项目文件夹应如此"></p>
+<h2 id="将-jar-文件与本地文件连接"><a href="#将-jar-文件与本地文件连接" class="headerlink" title="将 jar 文件与本地文件连接"></a><strong>将 jar 文件与本地文件连接</strong></h2><p>打开 Eclipse 。菜单 “File” 并点击 “Refresh” 。右击先前创建的项目并点击 “Properties” 。进入 “Java Build Path” 并选择 “Libraries” 选项。点击 “Add JARs…” 并选择 “slick_util.jar” ， “lwjgl.jar” ， 和 “lwjgl_util.jar” 文件。展开 lwjgl.jar 表并双击 “Native Library Folder Configuration”。写下你的项目名并在后跟随 “/lib/natives” 然后点击 “OK” 。</p>
+<p><img src="/images/Project-Properties.png" alt="项目属性"></p>
+<p><img src="/images/Java-Build-Path.png" alt="Eclipse 中 Java Build Path 窗口应与此类似。（“slick_util&quot; 文件也应在这里面）"></p>
+<h2 id="测试配置"><a href="#测试配置" class="headerlink" title="测试配置"></a><strong>测试配置</strong></h2><p>复制下面代码到你的项目中并运行来测试配置是否成功。如果没有异常并显示一个窗口，则配置正确。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.lwjgl.LWJGLException;</span><br><span class="line"><span class="keyword">import</span> org.lwjgl.opengl.Display;</span><br><span class="line"><span class="keyword">import</span> org.lwjgl.opengl.DisplayMode;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * If this application shows a blank and responsive window</span></span><br><span class="line"><span class="comment"> * and doesn&#x27;t throw any errors, you know you have installed lwjgl</span></span><br><span class="line"><span class="comment"> * correctly.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Oskar Veerhoek</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DisplayTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Display.setDisplayMode(<span class="keyword">new</span> DisplayMode(<span class="number">640</span>, <span class="number">480</span>));</span><br><span class="line">            Display.setTitle(<span class="string">&quot;Episode 1 – Display Test&quot;</span>);</span><br><span class="line">            Display.create();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (LWJGLException e) &#123;</span><br><span class="line">            System.err.println(<span class="string">&quot;Display wasn&#x27;t initialized correctly.&quot;</span>);</span><br><span class="line">            System.exit(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">while</span> (!Display.isCloseRequested()) &#123;</span><br><span class="line">            Display.update();</span><br><span class="line">            Display.sync(<span class="number">60</span>);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        Display.destroy();</span><br><span class="line">        System.exit(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Display-Test.png" alt="显示测试"></p>
+<h2 id="java-lang-UnsatisfiedLinkError-no-lwjgl-in-java-library-path"><a href="#java-lang-UnsatisfiedLinkError-no-lwjgl-in-java-library-path" class="headerlink" title="java.lang.UnsatisfiedLinkError: no lwjgl in java.library.path"></a><strong>java.lang.UnsatisfiedLinkError: no lwjgl in java.library.path</strong></h2><p>这个异常将在 LWJGL 无法找到需要的本地文件时被抛出。可能本地文件路径配置错误或选择了其它系统的本地文件。</p>
+<h2 id="译注"><a href="#译注" class="headerlink" title="译注"></a><strong>译注</strong></h2><ol>
+<li>此处的 LWJGL 并非为最新版，最新版请到 <a target="_blank" rel="noopener" href="https://www.lwjgl.org/">LWJGL 官网</a>下载。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/" rel="tag"># 开发学习</a>
+              <a href="/tags/LWJGL/" rel="tag"># LWJGL</a>
+              <a href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag"># 翻译</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/24/%E3%80%90%E7%BF%BB%E8%AF%91%E3%80%91LWJGL%20%E6%95%99%E7%A8%8B/" rel="prev" title="【翻译】LWJGL 教程">
+      <i class="fa fa-chevron-left"></i> 【翻译】LWJGL 教程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/24/%E3%80%90%E7%BF%BB%E8%AF%91%E3%80%91LWJGL%20%E7%AA%97%E5%8F%A3/" rel="next" title="【翻译】LWJGL 窗口">
+      【翻译】LWJGL 窗口 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LWJGL-Workspace"><span class="nav-number">1.</span> <span class="nav-text">LWJGL Workspace</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%BF%85%E8%A6%81%E6%96%87%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">下载必要文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8-LWJGL-workspace-%E4%B8%AD%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.2.</span> <span class="nav-text">在 LWJGL workspace 中创建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0-library-%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">添加 library 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86-jar-%E6%96%87%E4%BB%B6%E4%B8%8E%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.4.</span> <span class="nav-text">将 jar 文件与本地文件连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E9%85%8D%E7%BD%AE"><span class="nav-number">1.5.</span> <span class="nav-text">测试配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java-lang-UnsatisfiedLinkError-no-lwjgl-in-java-library-path"><span class="nav-number">1.6.</span> <span class="nav-text">java.lang.UnsatisfiedLinkError: no lwjgl in java.library.path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%91%E6%B3%A8"><span class="nav-number">1.7.</span> <span class="nav-text">译注</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tomoto</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tomotopieces" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tomotopieces" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tomoto</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
