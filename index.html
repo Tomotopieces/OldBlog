@@ -148,6 +148,254 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2077/01/01/Welcome/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tomoto">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tomoto">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2077/01/01/Welcome/" class="post-title-link" itemprop="url">Welcome</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2077-01-01 15:51:31" itemprop="dateCreated datePublished" datetime="2077-01-01T15:51:31+08:00">2077-01-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-26 16:08:58" itemprop="dateModified" datetime="2020-09-26T16:08:58+08:00">2020-09-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Tomoto-的私人博客"><a href="#Tomoto-的私人博客" class="headerlink" title="Tomoto 的私人博客"></a><strong>Tomoto 的私人博客</strong></h2><img src="/images/CuteCat.jpg" alt="CuteCat" width="256" height="256">
+
+<p>如果你看到了这只可爱的猫猫，那么欢迎你来到我的博客。这里是我写日记与学习笔记的地方。</p>
+<p>喜欢：</p>
+<ul>
+<li>吃</li>
+<li>轮滑</li>
+<li>敲代码</li>
+<li>看番</li>
+</ul>
+<p>在学：</p>
+<ul>
+<li>C++</li>
+<li>Java</li>
+<li>OpenGL</li>
+<li>Haskell</li>
+<li>Category Theory</li>
+<li>etc.</li>
+</ul>
+<p>想做游戏。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/09/26/OpenGL-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tomoto">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tomoto">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/26/OpenGL-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="post-title-link" itemprop="url">OpenGL-环境搭建</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-26 12:56:41 / 修改时间：13:19:29" itemprop="dateCreated datePublished" datetime="2020-09-26T12:56:41+08:00">2020-09-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="下载必要库"><a href="#下载必要库" class="headerlink" title="下载必要库"></a>下载必要库</h2><ul>
+<li><strong>GLFW</strong><ul>
+<li>针对 OpenGL 的 C 语言库。</li>
+<li>下载：<a target="_blank" rel="noopener" href="https://www.glfw.org/download.html">https://www.glfw.org/download.html</a></li>
+<li>下载 32 位版本，因为 64 位版本不稳定。</li>
+</ul>
+</li>
+<li><strong>GLEW</strong><ul>
+<li>用于代替 GLAD 来管理函数指针。</li>
+<li>下载：<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/glew/">https://sourceforge.net/projects/glew/</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="将项目与库连接"><a href="#将项目与库连接" class="headerlink" title="将项目与库连接"></a>将项目与库连接</h2><ol>
+<li><p>将 GLFW 和 GLEW 解压到一个新文件夹中，文件夹名建议为 OpenGL。目录结构如下。</p>
+<pre><code> - OpenGL
+   - glfw-x.x.x.bin.WIN32
+   - glew-x.x.x</code></pre>
+</li>
+<li><p>使用 Visual Studio 创建项目，创建一个 .cpp 格式的文件，比如 main.cpp 。</p>
+</li>
+<li><p>设置项目属性</p>
+<ol>
+<li>配置：所有配置</li>
+<li>平台：所有平台</li>
+<li>C/C++ -&gt; 常规 -&gt; 附加包含内容 -&gt; 编辑 -&gt; 新行<ol>
+<li>\OpenGL\glfw-x.x.x.bin.WIN32\include</li>
+<li>\OpenGL\glew-x.x.x\include</li>
+</ol>
+</li>
+<li>链接器 -&gt; 常规 -&gt; 附加库目录 -&gt; 编辑 -&gt; 新行<ol>
+<li>\OpenGL\glfw-x.x.x.bin.WIN32\lib-vc20xx</li>
+<li>\OpenGL\glew-x.x.x\lib\Release\Win32</li>
+</ol>
+</li>
+<li>链接器 -&gt; 输入 -&gt; 附加依赖项 -&gt; 编辑<ol>
+<li>opengl32.lib</li>
+<li>glfw3.lib</li>
+<li>glew32s.lib</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/09/26/%E6%97%A5%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tomoto">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tomoto">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/26/%E6%97%A5%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/" class="post-title-link" itemprop="url">日记（五）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-26 11:17:40 / 修改时间：11:29:04" itemprop="dateCreated datePublished" datetime="2020-09-26T11:17:40+08:00">2020-09-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="做梦"><a href="#做梦" class="headerlink" title="做梦"></a>做梦</h2><p>好久没做过这种醒来后没忘掉的梦了，在忘掉之前先记下来。</p>
+<p>在大字路口沙拉斯和蜜雪冰城的中间那里不知道为什么设立了交通检查，执岗警察是黄秋生。一堆人不管是走路的还是有车的都在那里排队检查。查到我的时候我慌了，以为是检查在此之前遭遇的事情。具体遭遇过的是什么事情不知道。然后就说漏嘴了，被带到了就旁边的政府旁边的一个不知道是什么地方，就在街边，像是休息站。填了一张不知道是什么的表之后，黄 sir 让那边的助理妹子给我搞了杯珍珠奶茶，让我到旁边房间去休息一下，我喝完就躺在那里面睡着了。醒来之后的剧情忘了。</p>
+<p>什么鬼剧情，为什么是黄秋生，好久没看香港警匪片了；还有奶茶，为什么是奶茶，好久没喝奶茶了已经。</p>
+<h2 id="OpenGL"><a href="#OpenGL" class="headerlink" title="OpenGL"></a>OpenGL</h2><p>因为在写 Java ，所以就想着用 LWJGL 来学 OpenGL ，可是找了两天，都没有找到好且完整的 LWJGL 教程，连官方的教程都写得很烂。于是又开始用 C++ 来直接写 OpenGL 了···</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/09/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -886,286 +1134,6 @@ C &lt;*&gt;-- Y</code></pre>
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/09/09/%E6%97%A5%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tomoto">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tomoto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/09/%E6%97%A5%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/" class="post-title-link" itemprop="url">日记（三）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-09 19:09:14" itemprop="dateCreated datePublished" datetime="2020-09-09T19:09:14+08:00">2020-09-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-14 17:10:03" itemprop="dateModified" datetime="2020-09-14T17:10:03+08:00">2020-09-14</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="感谢黑老板送的盐"><a href="#感谢黑老板送的盐" class="headerlink" title="感谢黑老板送的盐"></a>感谢黑老板送的盐</h2><p>老板大气，老板身体健康。</p>
-<p>昨天晚上看了 Michael 直播的 <a target="_blank" rel="noopener" href="https://space.bilibili.com/30620024">火火老师</a> 的独立游戏 demo 试玩，真的神仙···同样也是从 Michael 的小狐狸开始学的，八个半月做出来了 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pD4y1o71r">深沉之火的 domo </a>，太强了。</p>
-<p>之后听火火老师在麦群里提到了 <strong>盐与避难所</strong> 这个游戏，今天在看了一下散老师的实况，哇， 2D 横板 动作 闯关 soul-like 要素齐全，很合胃口。一看 steam ， 60 块钱，好贵。在群里吐槽了一下没想到黑老板就直接送了我一个，绝了。</p>
-<p>再次感谢黑老板！（虽然我不一定有时间玩（小声））</p>
-<hr>
-<h2 id="培训定了"><a href="#培训定了" class="headerlink" title="培训定了"></a>培训定了</h2><p>确定了去培训机构了，东方锐智，不知道教学质量怎么样。叹气。</p>
-<p>学费 18800 ， Java ，培训时间5个月，这个月下旬开班，全学完的话估计要到明年四五月份了。</p>
-<p>也不知道博思那边到时候提供的学习内容是什么，明天得问一下。</p>
-<p>锐智那边全日制，但周末和每天晚上肯定还是有时间的吧？晚上的时间估计也要抓起来学其他东西了。</p>
-<p>然后我就想在这段还没去培训的时间里偷懒了， <em>W D N M D</em> 。不能偷懒。现在这段时间闲下来了的话就学点其他的，明明还有那么多想学的东西没学。</p>
-<p>培训那边的课程内容记录一下，分割线分阶段：</p>
-<hr>
-<ol>
-<li>Java 基础</li>
-<li>MySQL</li>
-<li>JDBC （针的不绰？）</li>
-<li>多线程</li>
-<li>Socket</li>
-</ol>
-<hr>
-<ol start="6">
-<li>HTML5 + CSS</li>
-<li>JS</li>
-<li>JQuery / Bootstrap4</li>
-<li>JavaWeb</li>
-<li>Git</li>
-</ol>
-<hr>
-<ol start="11">
-<li>SSM</li>
-<li>SpringBoot</li>
-<li>Maven</li>
-<li>LayUI</li>
-<li>Oracle 数据库</li>
-</ol>
-<hr>
-<ol start="16">
-<li>Linux 服务器</li>
-<li>NoSQL: Redis 数据库</li>
-<li>SpringCloud</li>
-<li>Vue.js</li>
-<li>Web 系统安全</li>
-</ol>
-<hr>
-<h2 id="正式跑路"><a href="#正式跑路" class="headerlink" title="正式跑路"></a>正式跑路</h2><p>宅魂那边的活跑路了，感觉对不起宅魂，虽然有点不负责任，但我觉得也并没有亏欠他或者这个项目组什么的。情绪复杂，苦笑。</p>
-<p>反思了一下，这个项目做了这么久，但也就前几天才刚定下来 <code>异乡人</code> 这个名字。策划，框架，设计，功能需求，实现，等等一万个没有想到的东西，全都一塌糊涂。 demo1 能做出来真的已经是奇迹了。</p>
-<p>我是怎么做到现在的？因为海螺，对，因为海螺。要是海螺跑路了，那我也早就没了。</p>
-<p>所以仔细想想，这是我第一次与团队合作来进行项目开发，虽然我负责的不是功能实现之类的代码一块的。</p>
-<p>有学到什么吗？似乎没有。真没有···</p>
-<p>其他收获？认识了海螺？嗯？好 gay 噢。但确实很喜欢海螺。</p>
-<p>没了。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/09/08/%E7%A6%BB%E8%B0%B1%E7%9A%84Java%E6%B3%9B%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tomoto">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tomoto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/08/%E7%A6%BB%E8%B0%B1%E7%9A%84Java%E6%B3%9B%E5%9E%8B/" class="post-title-link" itemprop="url">离谱的Java泛型</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-08 16:51:33 / 修改时间：19:06:20" itemprop="dateCreated datePublished" datetime="2020-09-08T16:51:33+08:00">2020-09-08</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="带参数类型数组的创建方式"><a href="#带参数类型数组的创建方式" class="headerlink" title="带参数类型数组的创建方式"></a>带参数类型数组的创建方式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Pair&lt;String, String&gt;[] table0 = <span class="keyword">new</span> Pair&lt;String, String&gt;[size];  <span class="comment">//Error</span></span><br><span class="line"></span><br><span class="line">Pair&lt;String, String&gt;[] table1 = (Pair&lt;String, String&gt;[]) <span class="keyword">new</span> Pair&lt;?, ?&gt;[size];   <span class="comment">//OK</span></span><br><span class="line">Pair&lt;String, String&gt;[] table2 = <span class="keyword">new</span> Pair[size];   <span class="comment">//OK</span></span><br><span class="line">Pair[] table3 = <span class="keyword">new</span> Pair[size];   <span class="comment">//OK</span></span><br><span class="line">ArrayList&lt;Pair&lt;String, String&gt;&gt; table1 = <span class="keyword">new</span> ArrayList&lt;&gt;(); <span class="comment">//OK</span></span><br></pre></td></tr></table></figure>
-<p>这类声明通常会伴随着 <code>unchecked</code> 警告出现，在声明前标注 <code>@SuppressWarnings(&quot;unchecked&quot;)</code> 可以取消警告。</p>
-<hr>
-<h2 id="有跟没有差不多的泛型"><a href="#有跟没有差不多的泛型" class="headerlink" title="有跟没有差不多的泛型"></a>有跟没有差不多的泛型</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings(&quot;unchecked&quot;)</span></span><br><span class="line">Pair&lt;String, String&gt;[] table = (Pair&lt;String, String&gt;[]) <span class="keyword">new</span> Pair&lt;?, ?&gt;[<span class="number">1</span>];</span><br><span class="line"><span class="comment">//table[0] = new Pair&lt;&gt;(1, 2);</span></span><br><span class="line">table[<span class="number">0</span>] = <span class="keyword">new</span> Pair(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">//1=2</span></span><br><span class="line">System.out.println(table[<span class="number">0</span>]);</span><br><span class="line"><span class="comment">//ClassCastExecption: Integer cannot be cast to String</span></span><br><span class="line">System.out.println(<span class="string">&quot;[&quot;</span> + table[<span class="number">0</span>].getKey() + <span class="string">&quot;:&quot;</span>+ table[<span class="number">0</span>].getValue());</span><br></pre></td></tr></table></figure>
-<p>这第 4 行和第 6 行不报错，就离谱。</p>
-<p>然后如果这样写的话，程序不会炸，而是我炸了。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Pair&lt;?, ?&gt;[] table = <span class="keyword">new</span> Pair&lt;?, ?&gt;[<span class="number">2</span>];</span><br><span class="line">table[<span class="number">0</span>] = <span class="keyword">new</span> Pair&lt;&gt;(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">table[<span class="number">1</span>] = <span class="keyword">new</span> Pair&lt;&gt;(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>);</span><br><span class="line"><span class="comment">//1=2</span></span><br><span class="line">System.out.println(table[<span class="number">0</span>]);</span><br><span class="line"><span class="comment">//[1:2]</span></span><br><span class="line">System.out.println(<span class="string">&quot;[&quot;</span> + table[<span class="number">0</span>].getKey() + <span class="string">&quot;:&quot;</span>+ table[<span class="number">0</span>].getValue() + <span class="string">&quot;]&quot;</span>);</span><br><span class="line"><span class="comment">//a=b</span></span><br><span class="line">System.out.println(table[<span class="number">1</span>]);</span><br><span class="line"><span class="comment">//[a:b]</span></span><br><span class="line">System.out.println(<span class="string">&quot;[&quot;</span> + table[<span class="number">1</span>].getKey() + <span class="string">&quot;:&quot;</span>+ table[<span class="number">1</span>].getValue() + <span class="string">&quot;]&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>无法理解， <em>table</em> 到底是什么类型？通配类型 <em>&lt;?&gt;</em> 这么邪门的吗？</p>
-<hr>
-<h2 id="Java-的泛型是假的泛型"><a href="#Java-的泛型是假的泛型" class="headerlink" title="Java 的泛型是假的泛型"></a>Java 的泛型是假的泛型</h2><p>有个东西叫类型擦除。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(T t)</span> </span>&#123; ... &#125;</span><br><span class="line">-&gt;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">(Object t)</span> </span>&#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> &lt;T extends Comparable&gt; <span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(T t)</span> </span>&#123; ... &#125;</span><br><span class="line">-&gt;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">(Comparable t)</span> </span>&#123; ... &#125;</span><br></pre></td></tr></table></figure>
-<p>这些东西是一样的。 <em>JVM</em> 中（也就是 <em>Java</em> 运行期间）是没有泛型的，全是 <em>Object</em> ！</p>
-<p><strong>所以 <em>Java</em> 的泛型在本质上其实就是 <em>Object 与其子类</em> 之间的强制类型转换。</strong></p>
-<p>这样也就能解释得通上面为什么一会儿报错一会儿不报错了。</p>
-<p>所以也有人说： <em>Java</em> 的泛型是假的泛型。</p>
-<hr>
-<h2 id="Java-泛型的用处"><a href="#Java-泛型的用处" class="headerlink" title="Java 泛型的用处"></a>Java 泛型的用处</h2><p>暂时想到的唯一用处：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;T extends I1 &amp; I2&gt; <span class="keyword">void</span>(T t) &#123; ... &#125;</span><br></pre></td></tr></table></figure>
-<p>在这种多接口约束（？我也不知道叫什么）的情况下， <em>T</em> 就有用了，能帮助检查参数类型错误。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/09/06/%E5%88%9D%E8%A7%81%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%8F%8D%E5%B0%84%E3%80%81%E7%B1%BB%E5%8A%A0%E8%BD%BD%E3%80%81%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%9D%97%E7%9A%84%E5%8A%A8%E6%80%81%E6%B0%B4%E6%9E%9C%E5%B7%A5%E5%8E%82/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tomoto">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tomoto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/06/%E5%88%9D%E8%A7%81%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%8F%8D%E5%B0%84%E3%80%81%E7%B1%BB%E5%8A%A0%E8%BD%BD%E3%80%81%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%9D%97%E7%9A%84%E5%8A%A8%E6%80%81%E6%B0%B4%E6%9E%9C%E5%B7%A5%E5%8E%82/" class="post-title-link" itemprop="url">初见设计模式-一个关于反射、类加载、静态代码块的动态水果工厂</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-06 15:10:25 / 修改时间：16:31:51" itemprop="dateCreated datePublished" datetime="2020-09-06T15:10:25+08:00">2020-09-06</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="/images/DynamicFruitFactory.png" alt="水果工厂"><br>如图，idea甚至提示 <strong><em>未用到过Orange类</em></strong> ，下面是发生此事的原因与代码变成这样的过程。</p>
-<hr>
-<h2 id="静态代码块"><a href="#静态代码块" class="headerlink" title="静态代码块"></a>静态代码块</h2><p>开始时，我是准备用在各种具体水果类种用静态代码块来进行注册的，预想在类加载的时候就自行注册到工厂了。代码如下，其他水果类比:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Orange</span> <span class="keyword">extends</span> <span class="title">Fruit</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        FruitFactory.register(Orange.class.getName());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Orange</span><span class="params">(Integer size)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(size);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><em>FruitFactory.of(Class type)</em> 和 <em>FruitFactory.basketOf(Class type)</em> 方法接受的参数是 <em>Class</em> 类对象，而不是 <em>String</em> 。这两个方法中也没有调用 <em>FruitFactory.register(Class type)</em> 。</p>
-<hr>
-<h2 id="类加载"><a href="#类加载" class="headerlink" title="类加载"></a>类加载</h2><p>但是上述方法不可行，在 <em>basket</em> 调用 <em>length</em> 成员时出现了 <em>NPE</em> 错误，说明这些 <strong><em>具体水果类</em></strong> 没有执行过静态代码块。</p>
-<p>不应该啊？难道 <code>FruitFactory.of(Orange.class)</code> 这个时候没有加载 <em>Orange</em> 类？</p>
-<p>于是搜了一下Java的类何时被加载的相关内容，得到了以下信息：</p>
-<ol>
-<li>生成对象时，加载自身与父类；</li>
-<li>访问静态成员时；</li>
-<li>使用 <em>Class.forName(String className)</em> 方法时。</li>
-</ol>
-<p>行吧， <em>Orange.class</em> 的时候还真没加载 <em>Orange</em> 类。于是把静态代码块删了，在 <em>main</em> 的最前面加了这段代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Class.forName(<span class="string">&quot;fruit.Apple&quot;</span>);</span><br><span class="line">        Class.forName(<span class="string">&quot;fruit.Banana&quot;</span>);</span><br><span class="line">        Class.forName(<span class="string">&quot;fruit.Orange&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="设计模式原则"><a href="#设计模式原则" class="headerlink" title="设计模式原则"></a>设计模式原则</h2><p><img src="/images/Reasonable.jpg" alt="这合理吗？"></p>
-<p>当然不合理了，我要的肯定不是手动注册啊，想到这里，我又去查了一下设计模式的相关内容。<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/105681983">设计模式的6大原则</a></p>
-<p>这是 <strong>开闭原则</strong> 的其中一条说明：</p>
-<blockquote>
-<p>参数类型、引用对象尽量使用接口或者抽象类，而不是实现类；</p>
-</blockquote>
-<p>这样的话那就需要完全用反射来做这些东西咯，直接用 <em>Orange.class</em> 是有悖于这个原则的，于是就改成了现在的样子（顶图），没有用到类名符号，而使用的字符串来当作参数。</p>
-<p>这样一来， <em>FruitFactory</em> 类的文件就只 <em>import</em> 了 <em>Fruit</em> 这一个抽象类， <em>mian</em> 文件中也只 <em>import</em> 了 <em>Fruit</em> 类和 <em>FruitFactory</em> 这两个。两者都不需要具体的水果类。</p>
-<hr>
-<h2 id="打个样"><a href="#打个样" class="headerlink" title="打个样"></a>打个样</h2><p>来个动态 <strong><em>水🍎果🍌工🍊厂！</em></strong></p>
-<p>感觉工厂模式写法有很多种，但是我觉得这种很酷所以这样写。</p>
-<p><code>FruitFactory.java</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fruit.factory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> fruit.Fruit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Array;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Constructor;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationTargetException;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Dynamic fruit factory</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FruitFactory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Map&lt;String, Class&gt; fruitTypes = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Map&lt;Class, Constructor&gt; constructors = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Register a new type fruit</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> name fruit name</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (fruitTypes.get(name) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Class type = Class.forName(name);</span><br><span class="line">            fruitTypes.put(name, type);</span><br><span class="line">            constructors.put(type, type.getDeclaredConstructor(Integer.class));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException | NoSuchMethodException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> name a fruit name</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> size a fruit size</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the fruit</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Fruit <span class="title">of</span><span class="params">(String name, Integer size)</span> </span>&#123;</span><br><span class="line">        register(<span class="string">&quot;fruit.&quot;</span> + name);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> (Fruit) constructors.get(fruitTypes.get(<span class="string">&quot;fruit.&quot;</span> + name)).newInstance(size);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InstantiationException | InvocationTargetException | IllegalAccessException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1235,12 +1203,12 @@ C &lt;*&gt;-- Y</code></pre>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
