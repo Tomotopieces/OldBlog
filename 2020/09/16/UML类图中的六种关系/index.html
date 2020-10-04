@@ -213,19 +213,19 @@
 C ..&gt; X
 C ..&gt; Y
 C ..&gt; Z</code></pre>
-<br />
+<br>
 
 <h2 id="泛化关系"><a href="#泛化关系" class="headerlink" title="泛化关系"></a>泛化关系</h2><p>实线三角箭头 <code>--|&gt;</code></p>
 <p>子类 <em>继承</em> 父类。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">abstract</span> <span class="title">B</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">D</span> <span class="keyword">extends</span> <span class="title">B</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
 <pre><code>D --|&gt; B</code></pre>
-<br />
+<br>
 
 <h2 id="实现关系"><a href="#实现关系" class="headerlink" title="实现关系"></a>实现关系</h2><p>虚线三角箭头 <code>..|&gt;</code></p>
 <p>子类 <em>实现</em> 接口。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">I</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">implements</span> <span class="title">I</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
 <pre><code>C ..|&gt; I</code></pre>
-<br />
+<br>
 
 <h2 id="关联关系"><a href="#关联关系" class="headerlink" title="关联关系"></a>关联关系</h2><p>实线箭头 <code>--&gt;</code></p>
 <p>具有 <strong>导航性</strong> 。</p>
@@ -233,7 +233,7 @@ C ..&gt; Z</code></pre>
 <pre><code>A --&gt; B</code></pre>
 <h3 id="双向一对一"><a href="#双向一对一" class="headerlink" title="双向一对一"></a>双向一对一</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> B b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> A a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <pre><code>A &lt;--&gt; B</code></pre>
-<br />
+<br>
 
 <h2 id="聚合关系"><a href="#聚合关系" class="headerlink" title="聚合关系"></a>聚合关系</h2><p>实线菱形空心箭头 <code>--&lt;&gt;</code></p>
 <p>表示整体和部分的关系，整体与部分 <em>可以</em> 分开。</p>
@@ -241,7 +241,7 @@ C ..&gt; Z</code></pre>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Class C &#123;</span><br><span class="line">    <span class="keyword">private</span> X x; <span class="comment">// Nullable</span></span><br><span class="line">    <span class="keyword">private</span> Y y; <span class="comment">// Nullable</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setX</span><span class="params">(X x)</span> </span>&#123; <span class="keyword">this</span>.x = x; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setY</span><span class="params">(Y y)</span> </span>&#123; <span class="keyword">this</span>.y = y; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <pre><code>C &lt;&gt;-- X
 C &lt;&gt;-- Y</code></pre>
-<br />
+<br>
 
 <h2 id="组合关系"><a href="#组合关系" class="headerlink" title="组合关系"></a>组合关系</h2><p>实线菱形实心箭头 <code>--&lt;*&gt;</code></p>
 <p>表示整体和部分的关系，整体与部分 <em>不能</em> 分开。</p>
@@ -346,7 +346,7 @@ C &lt;*&gt;-- Y</code></pre>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -207,7 +207,7 @@
 <li>指挥者</li>
 </ol>
 <h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>当一个类的构建过程本身就是一个复杂的流程时，就有必要将构建过程单独提出来做成一个类或模块。这个类或模块就是建造者。</p>
-<br />
+<br>
 
 <h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><pre><code>Builder Pattern:
 
@@ -227,9 +227,9 @@ Builder    Product    Director    Client
    |                |                |
 Builder      ConcreteBuilder      Client</code></pre>
 <p><em>Client</em> 根据实际情况会与其他各个类有不同的关系。</p>
-<br />    
+<br>    
 
-<h2 id="Director"><a href="#Director" class="headerlink" title="Director ?"></a><em>Director</em> ?</h2><p>如果建造过程简单，完全可以将 <em>Director</em> 合并到 <em>Builder</em> 中。<br /><br><em>Builder</em> 中的方法负责实现建造过程中的每个细节，而 <em>Director</em> 负责将所有的细节按合理的逻辑顺序组合在一起。可以算是为了迎合 <strong>单一职责原则</strong> 而存在的东西。本质上创建 <em>Builder</em> 类也是将构建这一职责从原本的类中拆分出来从而满足单一职责原则的做法。</p>
+<h2 id="Director"><a href="#Director" class="headerlink" title="Director ?"></a><em>Director</em> ?</h2><p>如果建造过程简单，完全可以将 <em>Director</em> 合并到 <em>Builder</em> 中。<br><br><em>Builder</em> 中的方法负责实现建造过程中的每个细节，而 <em>Director</em> 负责将所有的细节按合理的逻辑顺序组合在一起。可以算是为了迎合 <strong>单一职责原则</strong> 而存在的东西。本质上创建 <em>Builder</em> 类也是将构建这一职责从原本的类中拆分出来从而满足单一职责原则的做法。</p>
 
     </div>
 
@@ -328,7 +328,7 @@ Builder      ConcreteBuilder      Client</code></pre>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
