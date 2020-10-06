@@ -148,6 +148,107 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/09/27/OpenGL-Triangle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tomoto">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tomoto">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/27/OpenGL-Triangle/" class="post-title-link" itemprop="url">OpenGL-Triangle</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-27 16:33:21 / 修改时间：17:28:04" itemprop="dateCreated datePublished" datetime="2020-09-27T16:33:21+08:00">2020-09-27</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="三角形"><a href="#三角形" class="headerlink" title="三角形"></a>三角形</h2><p>众所周知，三个点可以形成一个面，且 OpenGL 的图形绘制就是按各种三角形来的。所以能画一个三角形，就能画所有的东西。</p>
+<h2 id="VAO-VBO-EBO-Shader-Program"><a href="#VAO-VBO-EBO-Shader-Program" class="headerlink" title="VAO / VBO / EBO / Shader / Program"></a>VAO / VBO / EBO / Shader / Program</h2><h3 id="VAO-Vertex-Array-Object"><a href="#VAO-Vertex-Array-Object" class="headerlink" title="VAO: Vertex Array Object"></a>VAO: Vertex Array Object</h3><p><code>顶点数组对象</code></p>
+<p>用来绑定同一个图形的 <em>VBO</em> ， <em>EBO</em> 和 <em>Program</em> 。在绑定后，图形所有的属性调用都存在这里面，方便绘制。可以理解为一个简单的封装。</p>
+<p>使用前记得绑定，使用后记得解绑。</p>
+<h3 id="VBO-Vertex-Buffer-Object"><a href="#VBO-Vertex-Buffer-Object" class="headerlink" title="VBO: Vertex Buffer Object"></a>VBO: Vertex Buffer Object</h3><p><code>顶点缓冲对象</code></p>
+<p>用来存一个数组，这个数组包含了一个图形的所有顶点。</p>
+<p>假设有一三角形，顶点坐标可以为：</p>
+<pre><code>    vertex = 
+    [
+           0,  0.5, 0,
+        -0.5, -0.5, 0,
+         0.5, -0.5, 0
+    ]</code></pre>
+<p>因为是 2D 的三角形，所以第三个 z 轴值忽略。</p>
+<p>坐标值都在 -1.0 ~ 1.0 之间，叫<strong>标准化设备坐标</strong>。</p>
+<h3 id="EBO-Element-Buffer-Object"><a href="#EBO-Element-Buffer-Object" class="headerlink" title="EBO: Element Buffer Object"></a>EBO: Element Buffer Object</h3><p><code>索引缓冲对象</code></p>
+<p>用来存一个数组，这个数组描述了如何将图形划分为若干个三角形。</p>
+<p>假设有一举行，顶点数组为：</p>
+<pre><code>    vertex = 
+    [
+        -0.5,  0.5, 0,
+         0.5,  0.5, 0,
+        -0.5, -0.5, 0,
+         0.5, -0.5, 0
+    ]</code></pre>
+<p>OpenGL 要求用户告知如何 <strong>将这个矩形拆成若干个三角形</strong> ，再进行绘制。所以才有了 <em>EBO</em> 这东西，相当于给告诉 OpenGL ，请按以下顶点顺序来绘制各个三角形：</p>
+<pre><code>    indices =
+    [
+        0, 1, 2,
+        2, 3, 0
+    ]</code></pre>
+<p>这样就将矩形以左上到右下的对角线来拆分成了两个三角形。<br>所以 <em>EBO</em> 也被叫做 <em>IBO: Indices Buffer Object</em> 。</p>
+<h3 id="Shader"><a href="#Shader" class="headerlink" title="Shader"></a>Shader</h3><p><code>着色器</code></p>
+<p>用来表述如何绘制。</p>
+<p>可吞吐少量数据。</p>
+<p> GPU 上全是这些小 <em>Shader</em> 。</p>
+<h3 id="Program"><a href="#Program" class="headerlink" title="Program"></a>Program</h3><p><code>着色器程序</code></p>
+<p>用来链接不同的着色器。</p>
+<p>进行绘制时，至少需要一个 <strong><em>VertexShader</em> 顶点着色器</strong> 和一个 <strong><em>FragmentShader</em> 片段着色器</strong>。 <em>Program</em> 负责将两者链接起来。</p>
+<h2 id="使用时的一般流程。"><a href="#使用时的一般流程。" class="headerlink" title="使用时的一般流程。"></a>使用时的一般流程。</h2><p>在代码中使用 <em>VAO</em> / <em>VBO</em> / <em>EBO</em> 时，一般使用 <code>glGenXXX</code> 或者 <code>glCreateXXX</code> 函数来创建一个对象，用户用一个 <code>unsigned int</code> 来存放函数返回的对象 id 。在修改或调用时，也一般通过调用 <code>glGetXXX</code> ， <code>glSetXXX</code> 或者 <code>glBindXXX</code> 函数，传入 id 来使用。</p>
+<p> <em>VAO</em> 需要绑定为 <em>VertexArray</em> ， <em>VBO</em> 和 <em>EBO</em> 需要在对应的 <em>Buffer</em> 内写入数据。 </p>
+<p> <em>Shader</em> 在声明创建后需要从源获取，然后编译。</p>
+<p> <em>Program</em> 在声明创建后需要将 <em>Shader</em> 附加上来，然后链接。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/09/26/OpenGL-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1050,121 +1151,6 @@ C &lt;*&gt;-- Y</code></pre>
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/09/09/%E6%97%A5%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tomoto">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tomoto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/09/%E6%97%A5%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/" class="post-title-link" itemprop="url">日记（三）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-09 19:09:14" itemprop="dateCreated datePublished" datetime="2020-09-09T19:09:14+08:00">2020-09-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-14 17:10:03" itemprop="dateModified" datetime="2020-09-14T17:10:03+08:00">2020-09-14</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="感谢黑老板送的盐"><a href="#感谢黑老板送的盐" class="headerlink" title="感谢黑老板送的盐"></a>感谢黑老板送的盐</h2><p>老板大气，老板身体健康。</p>
-<p>昨天晚上看了 Michael 直播的 <a target="_blank" rel="noopener" href="https://space.bilibili.com/30620024">火火老师</a> 的独立游戏 demo 试玩，真的神仙···同样也是从 Michael 的小狐狸开始学的，八个半月做出来了 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pD4y1o71r">深沉之火的 domo </a>，太强了。</p>
-<p>之后听火火老师在麦群里提到了 <strong>盐与避难所</strong> 这个游戏，今天在看了一下散老师的实况，哇， 2D 横板 动作 闯关 soul-like 要素齐全，很合胃口。一看 steam ， 60 块钱，好贵。在群里吐槽了一下没想到黑老板就直接送了我一个，绝了。</p>
-<p>再次感谢黑老板！（虽然我不一定有时间玩（小声））</p>
-<hr>
-<h2 id="培训定了"><a href="#培训定了" class="headerlink" title="培训定了"></a>培训定了</h2><p>确定了去培训机构了，东方锐智，不知道教学质量怎么样。叹气。</p>
-<p>学费 18800 ， Java ，培训时间5个月，这个月下旬开班，全学完的话估计要到明年四五月份了。</p>
-<p>也不知道博思那边到时候提供的学习内容是什么，明天得问一下。</p>
-<p>锐智那边全日制，但周末和每天晚上肯定还是有时间的吧？晚上的时间估计也要抓起来学其他东西了。</p>
-<p>然后我就想在这段还没去培训的时间里偷懒了， <em>W D N M D</em> 。不能偷懒。现在这段时间闲下来了的话就学点其他的，明明还有那么多想学的东西没学。</p>
-<p>培训那边的课程内容记录一下，分割线分阶段：</p>
-<hr>
-<ol>
-<li>Java 基础</li>
-<li>MySQL</li>
-<li>JDBC （针的不绰？）</li>
-<li>多线程</li>
-<li>Socket</li>
-</ol>
-<hr>
-<ol start="6">
-<li>HTML5 + CSS</li>
-<li>JS</li>
-<li>JQuery / Bootstrap4</li>
-<li>JavaWeb</li>
-<li>Git</li>
-</ol>
-<hr>
-<ol start="11">
-<li>SSM</li>
-<li>SpringBoot</li>
-<li>Maven</li>
-<li>LayUI</li>
-<li>Oracle 数据库</li>
-</ol>
-<hr>
-<ol start="16">
-<li>Linux 服务器</li>
-<li>NoSQL: Redis 数据库</li>
-<li>SpringCloud</li>
-<li>Vue.js</li>
-<li>Web 系统安全</li>
-</ol>
-<hr>
-<h2 id="正式跑路"><a href="#正式跑路" class="headerlink" title="正式跑路"></a>正式跑路</h2><p>宅魂那边的活跑路了，感觉对不起宅魂，虽然有点不负责任，但我觉得也并没有亏欠他或者这个项目组什么的。情绪复杂，苦笑。</p>
-<p>反思了一下，这个项目做了这么久，但也就前几天才刚定下来 <code>异乡人</code> 这个名字。策划，框架，设计，功能需求，实现，等等一万个没有想到的东西，全都一塌糊涂。 demo1 能做出来真的已经是奇迹了。</p>
-<p>我是怎么做到现在的？因为海螺，对，因为海螺。要是海螺跑路了，那我也早就没了。</p>
-<p>所以仔细想想，这是我第一次与团队合作来进行项目开发，虽然我负责的不是功能实现之类的代码一块的。</p>
-<p>有学到什么吗？似乎没有。真没有···</p>
-<p>其他收获？认识了海螺？嗯？好 gay 噢。但确实很喜欢海螺。</p>
-<p>没了。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1234,7 +1220,7 @@ C &lt;*&gt;-- Y</code></pre>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
