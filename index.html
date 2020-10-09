@@ -232,6 +232,96 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/10/09/%E5%85%B3%E4%BA%8E%E5%BF%AB%E6%8E%92QuickSort/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tomoto">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tomoto">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/09/%E5%85%B3%E4%BA%8E%E5%BF%AB%E6%8E%92QuickSort/" class="post-title-link" itemprop="url">关于快排QuickSort</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-09 16:01:04 / 修改时间：16:20:48" itemprop="dateCreated datePublished" datetime="2020-10-09T16:01:04+08:00">2020-10-09</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>今天见到了好多种快速排序···感觉和我想象中的都不一样。</p>
+<h2 id="Haskell-实现"><a href="#Haskell-实现" class="headerlink" title="Haskell 实现"></a>Haskell 实现</h2><p>先放一张我认为的快排的 <code>Haskell</code> 实现，简单易懂：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">qsort</span> :: <span class="type">Int</span>[] -&gt; <span class="type">Int</span>[]</span><br><span class="line"><span class="title">qsort</span> [] = []</span><br><span class="line"><span class="title">qsort</span> (x:xs) = qsort left ++ [x] ++ qsort right</span><br><span class="line">  <span class="keyword">where</span></span><br><span class="line">    left = [y | y&lt;=xs, y &lt; x]</span><br><span class="line">    right = [y | y&lt;=xs, y &gt;= x]</span><br></pre></td></tr></table></figure>
+
+<h2 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h2><p>我认为快速排序的核心思想是<strong>分而治之</strong>，将数组头去除后的部分以数组头为界进行分类，然后将分类后的小数组再次去头然后分类处理，以此循环，直到数组长度为 1 。</p>
+<h2 id="逻辑顺序"><a href="#逻辑顺序" class="headerlink" title="逻辑顺序"></a>逻辑顺序</h2><ol>
+<li>取数组首元素 key</li>
+<li>从第二个元素开始遍历数组</li>
+<li>比 key 小的元素放进数组 left</li>
+<li>比 key 大的元素放进数组 right</li>
+<li>将 left 与 right 各自排序（递归）</li>
+<li>连接 left + key + right</li>
+</ol>
+<hr>
+<pre><code>[9, 0, 3, 2, 6, 7, 6]
+ ^
+
+[0, 3, 2, 6, 7, 6] 9 []
+ ^
+
+[0 [3, 2, 6, 7, 6]] 9 []
+    ^
+
+[0 [[2] 3 [6, 7, 6]]] 9 []
+           ^
+
+[0 [[2] 3 [6 [7, 6]]]] 9 []
+              ^
+
+[0 [[2] 3 [6 [[6] 7]]]] 9 []
+
+[0, 2, 3, 6, 6, 7, 9]</code></pre>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/10/09/%E6%97%A5%E8%AE%B0-2020-10-08/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -791,71 +881,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/09/29/%E6%97%A5%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tomoto">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tomoto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/29/%E6%97%A5%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/" class="post-title-link" itemprop="url">日记（六）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-29 00:02:04 / 修改时间：00:11:52" itemprop="dateCreated datePublished" datetime="2020-09-29T00:02:04+08:00">2020-09-29</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>今天（ 28 日）开始正式上课了（按时间来算已经是昨天了）。早上做了一些 Java 基础题， 25 题选择，错了 11 题···嗐，还是不够啊。</p>
-<p>午饭黄焖鸡不太好吃。</p>
-<p>下午正式开始学了。先是唠了好久的就业前景之类的···这东西，emmm其实都懂的吧，培训完了出去的肯定都是底层的，但是底层的又饱和了，高级的确实又缺···但也没办法，只能加油了。</p>
-<p>就真用记事本来写 Java ···好在明天就是教 IDE 了。这边用的 IDE 竟然是 IDEA 而不是 Eclipse ，这是好的！</p>
-<p>晚饭时间万福二楼就没什么人了，可以去吃了。有稀饭，很好，喝了两碗后整个人都精神起来了。</p>
-<p>早上九点上课，晚上九点放学，一周上课六天，这不就是 996 吗（</p>
-<p>努力学吧。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -925,7 +950,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
