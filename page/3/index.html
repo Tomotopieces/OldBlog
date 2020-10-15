@@ -148,6 +148,101 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/09/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tomoto">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tomoto">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">设计模式-建造者模式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-18 11:04:54" itemprop="dateCreated datePublished" datetime="2020-09-18T11:04:54+08:00">2020-09-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-21 19:17:34" itemprop="dateModified" datetime="2020-09-21T19:17:34+08:00">2020-09-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h2><p>核心角色：</p>
+<ol>
+<li>产品</li>
+<li>抽象建造者</li>
+<li>具体建造者</li>
+<li>指挥者</li>
+</ol>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>当一个类的构建过程本身就是一个复杂的流程时，就有必要将构建过程单独提出来做成一个类或模块。这个类或模块就是建造者。</p>
+<br>
+
+<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><pre><code>Builder Pattern:
+
+Builder    Product    Director    Client
+   |          |          |           |
+   | &lt;*&gt;----- | &lt;....... |           |
+   |          |          |           |
+   |       Product       |           |
+   |                     |           |
+   | ----------------&lt;*&gt; |           |
+   |                     |           |
+   |                  Director       |
+   |                                 |
+   |         ConcreteBuilder         |
+   |                |                |
+   | &lt;|------------ |                |
+   |                |                |
+Builder      ConcreteBuilder      Client</code></pre>
+<p><em>Client</em> 根据实际情况会与其他各个类有不同的关系。</p>
+<br>    
+
+<h2 id="Director"><a href="#Director" class="headerlink" title="Director ?"></a><em>Director</em> ?</h2><p>如果建造过程简单，完全可以将 <em>Director</em> 合并到 <em>Builder</em> 中。<br><br><em>Builder</em> 中的方法负责实现建造过程中的每个细节，而 <em>Director</em> 负责将所有的细节按合理的逻辑顺序组合在一起。可以算是为了迎合 <strong>单一职责原则</strong> 而存在的东西。本质上创建 <em>Builder</em> 类也是将构建这一职责从原本的类中拆分出来从而满足单一职责原则的做法。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/09/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1015,146 +1110,10 @@ C &lt;*&gt;-- Y</code></pre>
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/08/31/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tomoto">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tomoto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/31/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">博客搭建记录</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-31 21:33:17" itemprop="dateCreated datePublished" datetime="2020-08-31T21:33:17+08:00">2020-08-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-06 11:41:19" itemprop="dateModified" datetime="2020-09-06T11:41:19+08:00">2020-09-06</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>hexo框架搭建博客</p>
-<hr>
-<h2 id="视频参考"><a href="#视频参考" class="headerlink" title="视频参考"></a>视频参考</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Yb411a7ty">https://www.bilibili.com/video/BV1Yb411a7ty</a></p>
-<hr>
-<h2 id="创建博客"><a href="#创建博客" class="headerlink" title="创建博客"></a>创建博客</h2><ol start="0">
-<li><p>Windows环境用 <strong>gitbash</strong> 来进行操作会方便很多</p>
-</li>
-<li><p>环境搭建</p>
-<ol>
-<li><strong>nodejs</strong> 与 <strong>npm</strong>（<a target="_blank" rel="noopener" href="https://nodejs.org/">nodejs.org</a>）<ul>
-<li>安装nodejs与npm：<code>sudo apt install nodejs</code></li>
-<li>检查nodejs：<code>node -v</code></li>
-<li>检查npm：<code>npm -v</code></li>
-</ul>
-</li>
-<li><strong>cnpm</strong>（cnpm使用国内路线，可选安装）<ul>
-<li>安装：<code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code></li>
-<li>检查：<code>npm -v</code></li>
-</ul>
-</li>
-<li><strong>hexo</strong><ul>
-<li>安装：<code>npm install -g hexo-cli</code></li>
-<li>检查：<code>hexo -v</code></li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>创建并进入博客文件路径</p>
-</li>
-<li><p>初始化博客：<code>sudo hexo init</code></p>
-</li>
-<li><p>在github中创建仓库</p>
-<ul>
-<li>仓库名：<code>username.github.io</code></li>
-</ul>
-</li>
-<li><p><strong>deployer</strong></p>
-<ul>
-<li>安装：<code>npm install --save hexo-deployer-git</code></li>
-</ul>
-</li>
-<li><p>修改配置文件 <strong>_config.yml</strong></p>
-<p>将文件底部 <code>deploy</code> 部分修改为</p>
-<pre><code> deploy:
-     type: git
-     repo: https://github.com/username/username.github.io.git
-     branch: master</code></pre>
-</li>
-<li><p>推送到仓库</p>
-</li>
-</ol>
-<hr>
-<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>在博客文件夹下进行以下命令行操作</p>
-<h3 id="清除配置"><a href="#清除配置" class="headerlink" title="清除配置"></a>清除配置</h3><p><code>hexo clean</code> 或 <code>hexo cl</code></p>
-<h3 id="重新生成"><a href="#重新生成" class="headerlink" title="重新生成"></a>重新生成</h3><p><code>hexo generate</code> 或 <code>hexo g</code></p>
-<h3 id="本地挂载"><a href="#本地挂载" class="headerlink" title="本地挂载"></a>本地挂载</h3><p><code>hexo server</code> 或 <code>hexo s</code></p>
-<h3 id="推送到仓库"><a href="#推送到仓库" class="headerlink" title="推送到仓库"></a>推送到仓库</h3><p><code>hexo deploy</code> 或 <code>hexo d</code></p>
-<p>浏览器打开 <a target="_blank" rel="noopener" href="http://localhost:4000/">localhost:4000</a> 进行预览</p>
-<h3 id="换皮肤"><a href="#换皮肤" class="headerlink" title="换皮肤"></a>换皮肤</h3><ol>
-<li><p>将皮肤的仓库克隆至目录：<code>Blog/themes/themename</code></p>
-</li>
-<li><p>修改配置文件 _config.yml</p>
-<pre><code> theme: themename</code></pre>
-</li>
-<li><p>清除配置</p>
-</li>
-<li><p>重新生成</p>
-</li>
-<li><p>推送到仓库</p>
-</li>
-</ol>
-<h3 id="新文章"><a href="#新文章" class="headerlink" title="新文章"></a>新文章</h3><p><code>hexo new articlename</code> 或 <code>hexo n articlename</code></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1220,12 +1179,12 @@ C &lt;*&gt;-- Y</code></pre>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
