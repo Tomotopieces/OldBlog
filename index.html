@@ -232,6 +232,133 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/10/15/My-opinion-on-Plymorphism/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tomoto">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tomoto">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/15/My-opinion-on-Plymorphism/" class="post-title-link" itemprop="url">个人对于多态的见解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-15 15:28:56 / 修改时间：16:57:31" itemprop="dateCreated datePublished" datetime="2020-10-15T15:28:56+08:00">2020-10-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>首先排出一句让我看了发笑的话：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%A4%9A%E6%80%81/2282489?fr=aladdin#1">重载和多态无关</a> -百度百科</p>
+</blockquote>
+<p><img src="/images/RenHua.jpg" alt="人话？"></p>
+<h2 id="提前声明"><a href="#提前声明" class="headerlink" title="提前声明"></a>提前声明</h2><p>本篇文章十分主观，可能也有错误阐述，欢迎纠错。</p>
+<p>因为有许多的单词并没有中文翻译，或者个人认为翻译不恰当，所以有的直接用英文来阐述。（我才不管翻译得对不对，我就这么理解）</p>
+<p>不需要硬翻译成中文，毕竟可能会发生像“子函子范畴上的幺半群”这种奇怪的事情（明明是范畴论的东西，和群什么关系啊（小声））。</p>
+<h2 id="多态的种类"><a href="#多态的种类" class="headerlink" title="多态的种类"></a>多态的种类</h2><p>就先列出来。</p>
+<ol>
+<li><strong>Ad hoc polymorphism</strong></li>
+<li><strong>Parametric polymorphism</strong></li>
+<li><strong>Subtyping (Subtype Polymorphism)</strong></li>
+<li>Row Polymorphism</li>
+<li>Polytypism</li>
+</ol>
+<p>其实还有一些其他的，但是其实在实际开发中比较重要的就是这五个中的<strong>前三个</strong>。</p>
+<h2 id="Ad-hoc-polymorphism"><a href="#Ad-hoc-polymorphism" class="headerlink" title="Ad hoc polymorphism"></a>Ad hoc polymorphism</h2><blockquote>
+<p>… <strong>polymorphic functions can be applied to arguments of different types</strong>, because a polymorphic function can denote a number of distinct and potentially heterogeneous implementations depending on the type of argument(s) to which it is applied.</p>
+<p>-Wikipedia</p>
+</blockquote>
+<p>如果你不太想看上面这段英文的话，可以直接看我的理解。</p>
+<p>这里给一段 C++ 的栗子：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// unreasonable but whatever</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">add</span><span class="params">(<span class="keyword">double</span> a, <span class="keyword">double</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b + <span class="number">9032</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这里请注意上面那段维基引用之中的：<strong>函数能够通过被应用的参数的不同类型来选择不同的实现方式。</strong></p>
+<p>这话什么意思？</p>
+<p><strong>Overload</strong> ，函数重载。</p>
+<p>行，先把百度百科的头锤爆。</p>
+<h2 id="Parametric-polymorphism"><a href="#Parametric-polymorphism" class="headerlink" title="Parametric polymorphism"></a>Parametric polymorphism</h2><blockquote>
+<p>Using parametric polymorphism, a function or a data type can be written generically so that it can handle values identically without depending on their type.</p>
+<p>-Wikipedia</p>
+</blockquote>
+<p>还是先放Wiki的阐述。</p>
+<p><strong>对数据进行统一操作，而不在意它们的类型。</strong></p>
+<p>其实就是 <strong>Generic Types</strong> ，泛型。</p>
+<p>同样都是一个函数接受多种参数类型，那么 <code>Parametric</code> 和 <code>Ad hoc</code> 的区别呢？</p>
+<blockquote>
+<p>Thus, ad hoc polymorphism can generally only support a limited number of such distinct types, since a separate implementation has to be provided for each type.</p>
+<p>-Wikipedia</p>
+</blockquote>
+<p><code>Ad hoc</code> 基本上会对每种不同的参数类型有不同的实现方式，因此数量有限；</p>
+<p><code>Parametric</code> 对所有参数类型一视同仁，都是同一种实现。</p>
+<p>然后再贴一段 C++ STL 里的东西：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">vector</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push_back</span><span class="params">(T&amp;&amp; val)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// ... do push back</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是 <code>std::vector</code> 的声明，一般的 oop 语言类库中的容器类都会用到泛型。</p>
+<p>为什么不给 Java 的呢，因为 <a href="https://tomotopieces.github.io/2020/09/08/%E7%A6%BB%E8%B0%B1%E7%9A%84Java%E6%B3%9B%E5%9E%8B/">Java 嘛…</a></p>
+<h2 id="SubTyping"><a href="#SubTyping" class="headerlink" title="SubTyping"></a>SubTyping</h2><blockquote>
+<p>subtyping allows a function to be written to take an object of a certain type T, but also work correctly, if passed an object that belongs to <strong>a type S that is a subtype of T.</strong></p>
+<p>-Wikipedia</p>
+</blockquote>
+<p>这东西就很好理解了，字面意思，子类多态。</p>
+<p>体现在代码上的话就是类之间的<strong>继承</strong>关系，<strong>能出现父类对象的地方，必定能出现子类对象（里氏代换原则）。</strong></p>
+<p>那么自然，<strong>Override</strong> ，函数重写（或者说覆盖），就是 <code>SubTyping</code> 的一种体现。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>上面三者几乎囊括了 oop 语言中的所有多态，可以这样说：</p>
+<ul>
+<li><p>重载是 <code>Ad hoc polymorphism</code> 的表现；</p>
+</li>
+<li><p>泛型是 <code>Parametric polymorphism</code> 的表现；</p>
+</li>
+<li><p>继承是 <code>Subtyping</code> 的表现。</p>
+</li>
+</ul>
+<hr>
+<p>参考文献：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Polymorphism_(computer_science)">Polymorphism -Wikipeida</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/10/15/Java-static-method-cannot-be-overridden/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -246,7 +373,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/10/15/Java-static-method-cannot-be-overridden/" class="post-title-link" itemprop="url">Java-static-method-cannot-be-overridden</a>
+            <a href="/2020/10/15/Java-static-method-cannot-be-overridden/" class="post-title-link" itemprop="url">Java 的静态方法无法被重写</a>
         </h2>
 
         <div class="post-meta">
@@ -257,7 +384,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-10-15 10:38:09 / 修改时间：11:50:42" itemprop="dateCreated datePublished" datetime="2020-10-15T10:38:09+08:00">2020-10-15</time>
+              <time title="创建时间：2020-10-15 10:38:09 / 修改时间：16:59:07" itemprop="dateCreated datePublished" datetime="2020-10-15T10:38:09+08:00">2020-10-15</time>
             </span>
 
           
@@ -271,30 +398,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Java-的静态方法无法被重写"><a href="#Java-的静态方法无法被重写" class="headerlink" title="Java 的静态方法无法被重写"></a>Java 的静态方法无法被重写</h1><p>那么下面这段代码发生了什么？</p>
+          <p>那么下面这段代码发生了什么？</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Super</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">name</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;IzzelAliz&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sub</span> <span class="keyword">extends</span> <span class="title">Super</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">name</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Tomoto&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><p>先来说关键字 <code>static</code> 。这个词的原意是 <em>静态</em> 。那么在了解静态的时候，就可以拿出与其相对的 <em>动态</em> 来进行比较，便于理解。</p>
 <h2 id="C-的-dynamic"><a href="#C-的-dynamic" class="headerlink" title="C++ 的 dynamic"></a>C++ 的 dynamic</h2><p>请允许我在这里用 C++ 的语法来进行对比。如果没有接触过 C++ 也没有关系，相信你能看懂这段代码的大意。以上代码类比到 C++ 中大概如此：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Super</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="built_in">std</span>::<span class="built_in">string</span> <span class="title">name</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::<span class="built_in">string</span>(<span class="string">&quot;IzzelAliz&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Super</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="built_in">std</span>::<span class="built_in">string</span> <span class="title">name</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::<span class="built_in">string</span>(<span class="string">&quot;IzzelAliz&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub</span></span></span><br><span class="line"><span class="class">  :</span> <span class="keyword">public</span> Super</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="built_in">std</span>::<span class="built_in">string</span> <span class="title">name</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::<span class="built_in">string</span>(<span class="string">&quot;Tomoto&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub</span></span></span><br><span class="line"><span class="class">  :</span> <span class="keyword">public</span> Super</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="built_in">std</span>::<span class="built_in">string</span> <span class="title">name</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::<span class="built_in">string</span>(<span class="string">&quot;Tomoto&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p>如果您写过 C++ ，那么不难发现，在这段代码中， <code>Sub</code> 类的 <code> std::string name()</code> 方法其实并没有重写。下面这段代码的打印结果是 <code>IzzelAliz</code> ，这就是 <code>std::string Sub::name()</code> 方法没有加入到虚函数表，也就是 <em>没有被重写</em> ，的有力证据。</p>
 <p>关于虚函数表的内容这里不展开，感兴趣的可以查阅维基: <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Virtual_method_table">Virtual Method table -Wikipedia</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Super* super = <span class="keyword">new</span> Sub();</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; super-&gt;name() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// IzzelAliz</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Super* super = <span class="keyword">new</span> Sub();</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; super-&gt;name() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// IzzelAliz</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="dynamic"><a href="#dynamic" class="headerlink" title="dynamic"></a>dynamic</h2><p>在 C++ 中，如果要在子类中重写父类的方法，需要用到关键字 <code>virtual</code> 和 <code>override</code> 。</p>
 <p><strong>C++ 中，只有带有 <code>virtual</code> 关键字的方法才能被重写。</strong></p>
 <p><code>override</code> 可有可无，但是一般都会加上，作用类似于 Java 中的 <code>@Override</code> 注解。我们先来重写一个一般的方法。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Super</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="keyword">int</span> <span class="title">number</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">42</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Super</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="keyword">int</span> <span class="title">number</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">42</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub</span></span></span><br><span class="line"><span class="class">  :</span> <span class="keyword">public</span> Super</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">number</span><span class="params">()</span> <span class="keyword">override</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">9032676</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub</span></span></span><br><span class="line"><span class="class">  :</span> <span class="keyword">public</span> Super</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">number</span><span class="params">()</span> <span class="keyword">override</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">9032676</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p><code>virtual</code> 实际上实现了 <strong>动态绑定（dynamic bind）</strong> 。是一种动态的表现。那么如果我们将这个 <strong>动态</strong> 的关键字用在 <strong>静态</strong> 关键字 <code>staitc</code> 上，会怎么样？答案是报错。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Super</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="keyword">static</span> <span class="built_in">std</span>::<span class="built_in">string</span> <span class="title">name</span><span class="params">()</span> <span class="comment">// Only non-static member functions may be virtual</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::<span class="built_in">string</span>(<span class="string">&quot;IzzelAliz&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Super</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="keyword">static</span> <span class="built_in">std</span>::<span class="built_in">string</span> <span class="title">name</span><span class="params">()</span> <span class="comment">// Only non-static member functions may be virtual</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::<span class="built_in">string</span>(<span class="string">&quot;IzzelAliz&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p>这是肯定的，毕竟 <strong>静态</strong> 和 <strong>动态</strong> 是一对反义词，凑在一起那肯定就自相矛盾了。也就是说：</p>
 <p><strong>静态方法无法被重写。</strong></p>
@@ -305,6 +432,7 @@
 <p>所以：</p>
 <p><strong><code>String Super.name()</code> 与 <code>String Sub.name()</code> 实际上是两个完全不相干的方法</strong>。</p>
 <p>他们所属的类具有继承关系，但是它们两个方法之间没有任何关系，只是单纯的名字相同。如果你尝试在 <code>String Sub.name()</code> 方法之前加上 <code>@Override</code> 注解，那么编译器会产生一个错误。</p>
+<hr>
 <p>特别鸣谢：</p>
 <ul>
 <li>海螺（Izzel.io）</li>
@@ -854,67 +982,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/10/03/%E8%B0%A8%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tomoto">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tomoto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/03/%E8%B0%A8%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" class="post-title-link" itemprop="url">谨记（二）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-10-03 10:15:13 / 修改时间：10:20:24" itemprop="dateCreated datePublished" datetime="2020-10-03T10:15:13+08:00">2020-10-03</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong><em>勿对他人于任何方面过度依赖</em></strong></p>
-<p><strong><em>勿对他人产生恋爱情感</em></strong></p>
-<p><strong><em>勿自取其辱</em></strong></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -984,12 +1051,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
