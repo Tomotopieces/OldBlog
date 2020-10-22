@@ -179,7 +179,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-22 11:21:42" itemprop="dateModified" datetime="2020-10-22T11:21:42+08:00">2020-10-22</time>
+                <time title="修改时间：2020-10-22 12:00:49" itemprop="dateModified" datetime="2020-10-22T12:00:49+08:00">2020-10-22</time>
               </span>
 
           
@@ -194,36 +194,14 @@
 
       
           <p><img src="/images/DynamicFruitFactory.png" alt="水果工厂"><br>如图，idea甚至提示 <strong><em>未用到过Orange类</em></strong> ，下面是发生此事的原因与代码变成这样的过程。</p>
-<hr>
-<h2 id="静态代码块"><a href="#静态代码块" class="headerlink" title="静态代码块"></a>静态代码块</h2><p>开始时，我是准备用在各种具体水果类种用静态代码块来进行注册的，预想在类加载的时候就自行注册到工厂了。代码如下，其他水果类比:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Orange</span> <span class="keyword">extends</span> <span class="title">Fruit</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        FruitFactory.register(Orange.class.getName());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Orange</span><span class="params">(Integer size)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(size);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><em>FruitFactory.of(Class type)</em> 和 <em>FruitFactory.basketOf(Class type)</em> 方法接受的参数是 <em>Class</em> 类对象，而不是 <em>String</em> 。这两个方法中也没有调用 <em>FruitFactory.register(Class type)</em> 。</p>
-<hr>
-<h2 id="类加载"><a href="#类加载" class="headerlink" title="类加载"></a>类加载</h2><p>但是上述方法不可行，在 <em>basket</em> 调用 <em>length</em> 成员时出现了 <em>NPE</em> 错误，说明这些 <strong><em>具体水果类</em></strong> 没有执行过静态代码块。</p>
-<p>不应该啊？难道 <code>FruitFactory.of(Orange.class)</code> 这个时候没有加载 <em>Orange</em> 类？</p>
-<p>于是搜了一下Java的类何时被加载的相关内容，得到了以下信息：</p>
-<ol>
-<li>生成对象时，加载自身与父类；</li>
-<li>访问静态成员时；</li>
-<li>使用 <em>Class.forName(String className)</em> 方法时。</li>
-</ol>
-<p>行吧， <em>Orange.class</em> 的时候还真没加载 <em>Orange</em> 类。于是把静态代码块删了，在 <em>main</em> 的最前面加了这段代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Class.forName(<span class="string">&quot;fruit.Apple&quot;</span>);</span><br><span class="line">        Class.forName(<span class="string">&quot;fruit.Banana&quot;</span>);</span><br><span class="line">        Class.forName(<span class="string">&quot;fruit.Orange&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="设计模式原则"><a href="#设计模式原则" class="headerlink" title="设计模式原则"></a>设计模式原则</h2><p><img src="/images/Reasonable.jpg" alt="这合理吗？"></p>
-<p>当然不合理了，我要的肯定不是手动注册啊，想到这里，我又去查了一下设计模式的相关内容。<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/105681983">设计模式的6大原则</a></p>
-<p>这是 <strong>开闭原则</strong> 的其中一条说明：</p>
-<blockquote>
-<p>参数类型、引用对象尽量使用接口或者抽象类，而不是实现类；</p>
-</blockquote>
-<p>这样的话那就需要完全用反射来做这些东西咯，直接用 <em>Orange.class</em> 是有悖于这个原则的，于是就改成了现在的样子（顶图），没有用到类名符号，而使用的字符串来当作参数。</p>
-<p>这样一来， <em>FruitFactory</em> 类的文件就只 <em>import</em> 了 <em>Fruit</em> 这一个抽象类， <em>mian</em> 文件中也只 <em>import</em> 了 <em>Fruit</em> 类和 <em>FruitFactory</em> 这两个。两者都不需要具体的水果类。</p>
-<hr>
-<h2 id="打个样"><a href="#打个样" class="headerlink" title="打个样"></a>打个样</h2><p>来个动态 <strong><em>水🍎果🍌工🍊厂！</em></strong></p>
-<p>感觉工厂模式写法有很多种，但是我觉得这种很酷所以这样写。</p>
-<p><code>FruitFactory.java</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fruit.factory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> fruit.Fruit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Array;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Constructor;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationTargetException;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Dynamic fruit factory</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FruitFactory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Map&lt;String, Class&gt; fruitTypes = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Map&lt;Class, Constructor&gt; constructors = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Register a new type fruit</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> name fruit name</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (fruitTypes.get(name) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Class type = Class.forName(name);</span><br><span class="line">            fruitTypes.put(name, type);</span><br><span class="line">            constructors.put(type, type.getDeclaredConstructor(Integer.class));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException | NoSuchMethodException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> name a fruit name</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> size a fruit size</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the fruit</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Fruit <span class="title">of</span><span class="params">(String name, Integer size)</span> </span>&#123;</span><br><span class="line">        register(<span class="string">&quot;fruit.&quot;</span> + name);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> (Fruit) constructors.get(fruitTypes.get(<span class="string">&quot;fruit.&quot;</span> + name)).newInstance(size);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InstantiationException | InvocationTargetException | IllegalAccessException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/06/First-sight-of-Design-pattern-A-dynamic-fruit-factory-with-Reflection-Class-load-and-Static-code-block/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -273,7 +251,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-22 11:18:58" itemprop="dateModified" datetime="2020-10-22T11:18:58+08:00">2020-10-22</time>
+                <time title="修改时间：2020-10-22 12:00:52" itemprop="dateModified" datetime="2020-10-22T12:00:52+08:00">2020-10-22</time>
               </span>
 
           
@@ -287,7 +265,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a>Class类</h2><p>将一个class视作object，成员有constructor、method和field。</p>
+          <a id="more"></a>
+
+<h2 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a>Class类</h2><p>将一个class视作object，成员有constructor、method和field。</p>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>反射水果：抽象类Fruit，子类Apple和Banana，其中Apple实现了Comparable接口；FruitFactory通过反射来匹配不同的逻辑。</p>
 <p>英语稀烂，注释别认真。</p>
 <p><code>Fruit.java</code></p>
@@ -349,7 +329,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-22 11:24:43" itemprop="dateModified" datetime="2020-10-22T11:24:43+08:00">2020-10-22</time>
+                <time title="修改时间：2020-10-22 12:00:16" itemprop="dateModified" datetime="2020-10-22T12:00:16+08:00">2020-10-22</time>
               </span>
 
           
@@ -363,7 +343,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>面试完了，一问三不知，真的丢了舅舅的脸。估计还是要找个地方培训，福州···哎。</p>
+          <a id="more"></a>
+
+<p>面试完了，一问三不知，真的丢了舅舅的脸。估计还是要找个地方培训，福州···哎。</p>
 <p>每日焦虑，无所事事，没有学习动力，嗐。</p>
 <p>总是在等着别人来救我，但是从来没有人来救我，家里人也只是给了我力所能及的帮助。老是在明明还有机会挽回的情况下放任不管，一手导致了最糟糕的结果。</p>
 <p>我不想泯然众人啊，谁想呢。</p>
@@ -417,7 +399,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-22 11:25:13" itemprop="dateModified" datetime="2020-10-22T11:25:13+08:00">2020-10-22</time>
+                <time title="修改时间：2020-10-22 12:00:12" itemprop="dateModified" datetime="2020-10-22T12:00:12+08:00">2020-10-22</time>
               </span>
 
           
@@ -432,28 +414,14 @@
 
       
           <h2 id="由笔试结果引发的思考"><a href="#由笔试结果引发的思考" class="headerlink" title="由笔试结果引发的思考"></a>由笔试结果引发的思考</h2><p>昨天，也就是刚搭好博客的同一天的晚上，笔试的邮件来了，也就点进去做了。结果很糟，满分79分，我只拿了32分···然后就想了很多，搞得彻夜难眠。</p>
-<hr>
-<h2 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h2><ol>
-<li>有很大程度的自大。明知道自己是个自学的半吊子，明知什么都是只学了皮毛，但有一种莫名其妙的自信，就很离谱。</li>
-<li>经常因一些没意义的事情而分散精力。搭这个博客真的有意义吗？搭博客的时间用来学其他学到一半的东西是否会更好？写这篇博文还是日记的东西的时间用来学习时候会更好？我不知道···</li>
-<li>确实要放下一些对工作帮助不大或者没有帮助的东西，先开始学工作上需要的技能了。</li>
-</ol>
-<hr>
-<h2 id="欠缺"><a href="#欠缺" class="headerlink" title="欠缺"></a>欠缺</h2><p>就这次笔试考察的技能而言，全都不会。</p>
-<ol>
-<li>Java</li>
-<li>Java EE</li>
-<li>Jqueury</li>
-<li>WEB</li>
-<li>Linux Bash</li>
-<li>Spring</li>
-<li>JSP</li>
-<li>Struts</li>
-<li>DBS</li>
-<li>数据结构</li>
-<li>算法</li>
-</ol>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/01/Diary-2020-09-01/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -503,7 +471,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-22 11:22:06" itemprop="dateModified" datetime="2020-10-22T11:22:06+08:00">2020-10-22</time>
+                <time title="修改时间：2020-10-22 11:59:17" itemprop="dateModified" datetime="2020-10-22T11:59:17+08:00">2020-10-22</time>
               </span>
 
           
@@ -518,78 +486,14 @@
 
       
           <p>hexo框架搭建博客</p>
-<hr>
-<h2 id="视频参考"><a href="#视频参考" class="headerlink" title="视频参考"></a>视频参考</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Yb411a7ty">https://www.bilibili.com/video/BV1Yb411a7ty</a></p>
-<hr>
-<h2 id="创建博客"><a href="#创建博客" class="headerlink" title="创建博客"></a>创建博客</h2><ol start="0">
-<li><p>Windows环境用 <strong>gitbash</strong> 来进行操作会方便很多</p>
-</li>
-<li><p>环境搭建</p>
-<ol>
-<li><strong>nodejs</strong> 与 <strong>npm</strong>（<a target="_blank" rel="noopener" href="https://nodejs.org/">nodejs.org</a>）<ul>
-<li>安装nodejs与npm：<code>sudo apt install nodejs</code></li>
-<li>检查nodejs：<code>node -v</code></li>
-<li>检查npm：<code>npm -v</code></li>
-</ul>
-</li>
-<li><strong>cnpm</strong>（cnpm使用国内路线，可选安装）<ul>
-<li>安装：<code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code></li>
-<li>检查：<code>npm -v</code></li>
-</ul>
-</li>
-<li><strong>hexo</strong><ul>
-<li>安装：<code>npm install -g hexo-cli</code></li>
-<li>检查：<code>hexo -v</code></li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>创建并进入博客文件路径</p>
-</li>
-<li><p>初始化博客：<code>sudo hexo init</code></p>
-</li>
-<li><p>在github中创建仓库</p>
-<ul>
-<li>仓库名：<code>username.github.io</code></li>
-</ul>
-</li>
-<li><p><strong>deployer</strong></p>
-<ul>
-<li>安装：<code>npm install --save hexo-deployer-git</code></li>
-</ul>
-</li>
-<li><p>修改配置文件 <strong>_config.yml</strong></p>
-<p>将文件底部 <code>deploy</code> 部分修改为</p>
-<pre><code> deploy:
-     type: git
-     repo: https://github.com/username/username.github.io.git
-     branch: master</code></pre>
-</li>
-<li><p>推送到仓库</p>
-</li>
-</ol>
-<hr>
-<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>在博客文件夹下进行以下命令行操作</p>
-<h3 id="清除配置"><a href="#清除配置" class="headerlink" title="清除配置"></a>清除配置</h3><p><code>hexo clean</code> 或 <code>hexo cl</code></p>
-<h3 id="重新生成"><a href="#重新生成" class="headerlink" title="重新生成"></a>重新生成</h3><p><code>hexo generate</code> 或 <code>hexo g</code></p>
-<h3 id="本地挂载"><a href="#本地挂载" class="headerlink" title="本地挂载"></a>本地挂载</h3><p><code>hexo server</code> 或 <code>hexo s</code></p>
-<h3 id="推送到仓库"><a href="#推送到仓库" class="headerlink" title="推送到仓库"></a>推送到仓库</h3><p><code>hexo deploy</code> 或 <code>hexo d</code></p>
-<p>浏览器打开 <a target="_blank" rel="noopener" href="http://localhost:4000/">localhost:4000</a> 进行预览</p>
-<h3 id="换皮肤"><a href="#换皮肤" class="headerlink" title="换皮肤"></a>换皮肤</h3><ol>
-<li><p>将皮肤的仓库克隆至目录：<code>Blog/themes/themename</code></p>
-</li>
-<li><p>修改配置文件 _config.yml</p>
-<pre><code> theme: themename</code></pre>
-</li>
-<li><p>清除配置</p>
-</li>
-<li><p>重新生成</p>
-</li>
-<li><p>推送到仓库</p>
-</li>
-</ol>
-<h3 id="新文章"><a href="#新文章" class="headerlink" title="新文章"></a>新文章</h3><p><code>hexo new articlename</code> 或 <code>hexo n articlename</code></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/08/31/Blog-setup-memo/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

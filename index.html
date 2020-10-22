@@ -179,7 +179,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-21 19:49:07" itemprop="dateModified" datetime="2020-10-21T19:49:07+08:00">2020-10-21</time>
+                <time title="修改时间：2020-10-22 12:02:09" itemprop="dateModified" datetime="2020-10-22T12:02:09+08:00">2020-10-22</time>
               </span>
 
           
@@ -197,25 +197,14 @@
 
 <p>如果你看到了这只可爱的猫猫，那么欢迎你来到我的博客。这里是我写日记与学习笔记的地方。</p>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=654547&auto=0&height=32"></iframe>
-
-<p>喜欢：</p>
-<ul>
-<li>吃</li>
-<li>轮滑</li>
-<li>敲代码</li>
-<li>看番</li>
-</ul>
-<p>在学：</p>
-<ul>
-<li>C++</li>
-<li>Java</li>
-<li>OpenGL</li>
-<li>Haskell</li>
-<li>Category Theory</li>
-<li>etc.</li>
-</ul>
-<p>想做游戏。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2077/01/01/Welcome/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -257,10 +246,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-10-21 12:47:25 / 修改时间：19:14:16" itemprop="dateCreated datePublished" datetime="2020-10-21T12:47:25+08:00">2020-10-21</time>
+              <time title="创建时间：2020-10-21 12:47:25" itemprop="dateCreated datePublished" datetime="2020-10-21T12:47:25+08:00">2020-10-21</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-22 12:00:44" itemprop="dateModified" datetime="2020-10-22T12:00:44+08:00">2020-10-22</time>
+              </span>
 
           
 
@@ -275,89 +270,14 @@
       
           <p>首先感谢雨轩老师。</p>
 <p>本篇为 20-21 日雨轩老师于 [数据删除] 演讲内容的整理笔记，以下代码仅为对雨轩老师代码的小部分修改与重新排版。</p>
-<h2 id="ADT"><a href="#ADT" class="headerlink" title="ADT"></a>ADT</h2><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Algebraic_data_type">Algebraic data type -Wikipedia</a></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>以 <code>Either</code> 为例</p>
-<p><em>Haskell</em> ：</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">Either</span> a b = <span class="type">Left</span> a | <span class="type">Right</span> b</span></span><br></pre></td></tr></table></figure>
-
-<p><em>Java</em> ：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Either</span>&lt;<span class="title">A</span>, <span class="title">B</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;A, B&gt; <span class="function">Either&lt;A, B&gt; <span class="title">left</span><span class="params">(A left)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Left&lt;&gt;(left);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;A, B&gt; <span class="function">Either&lt;A, B&gt; <span class="title">right</span><span class="params">(B right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Right&lt;&gt;(right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> &lt;R&gt; <span class="function">R <span class="title">match</span><span class="params">(Left.Case&lt;A, B, R&gt; caseLeft,</span></span></span><br><span class="line"><span class="function"><span class="params">                                Right.Case&lt;A, B, R&gt; caseRight)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Left</span>&lt;<span class="title">A</span>, <span class="title">B</span>&gt; <span class="keyword">extends</span> <span class="title">Either</span>&lt;<span class="title">A</span>, <span class="title">B</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> A left;</span><br><span class="line"></span><br><span class="line">        Left(A left) &#123;</span><br><span class="line">            <span class="keyword">this</span>.left = left;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> &lt;R&gt; <span class="function">R <span class="title">match</span><span class="params">(Left.Case&lt;A, B, R&gt; caseLeft,</span></span></span><br><span class="line"><span class="function"><span class="params">                           Right.Case&lt;A, B, R&gt; caseRight)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> caseLeft.caseLeft(left);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Case</span>&lt;<span class="title">A</span>, <span class="title">B</span>, <span class="title">R</span>&gt; </span>&#123;</span><br><span class="line">            <span class="function">R <span class="title">caseLeft</span><span class="params">(A left)</span></span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Right</span>&lt;<span class="title">A</span>, <span class="title">B</span>&gt; <span class="keyword">extends</span> <span class="title">Either</span>&lt;<span class="title">A</span>, <span class="title">B</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> B right;</span><br><span class="line"></span><br><span class="line">        Right(B right) &#123;</span><br><span class="line">            <span class="keyword">this</span>.right = right;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> &lt;R&gt; <span class="function">R <span class="title">match</span><span class="params">(Left.Case&lt;A, B, R&gt; caseLeft,</span></span></span><br><span class="line"><span class="function"><span class="params">                           Right.Case&lt;A, B, R&gt; caseRight)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> caseRight.caseRight(right);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Case</span>&lt;<span class="title">A</span>, <span class="title">B</span>, <span class="title">R</span>&gt; </span>&#123;</span><br><span class="line">            <span class="function">R <span class="title">caseRight</span><span class="params">(B right)</span></span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>测试：</p>
-<p><em>Haskell</em> :</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">showEither</span> :: (<span class="type">Show</span> a, <span class="type">Show</span> b) =&gt; <span class="type">Either</span> a b -&gt; <span class="type">String</span></span><br><span class="line"><span class="title">showEither</span> (<span class="type">Left</span> x) = <span class="string">&quot;Left[&quot;</span> ++ show x ++ <span class="string">&quot;]&quot;</span></span><br><span class="line"><span class="title">showEither</span> (<span class="type">Right</span> x) = <span class="string">&quot;Right[&quot;</span> ++ show x ++ <span class="string">&quot;]&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="title">main</span> :: <span class="type">IO</span>()</span><br><span class="line"><span class="title">main</span> = <span class="keyword">do</span></span><br><span class="line">  putStrLn . showEither $ <span class="type">Left</span> <span class="string">&quot;foo&quot;</span> <span class="comment">-- Left[&quot;foo&quot;]</span></span><br><span class="line">  putStrLn . showEither $ <span class="type">Right</span> <span class="number">12450</span> <span class="comment">-- Right[12450]</span></span><br></pre></td></tr></table></figure>
-
-<p><em>Java</em> :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EitherTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;A, B&gt; <span class="function">String <span class="title">showEither</span><span class="params">(Either&lt;A, B&gt; either)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> either.match(</span><br><span class="line">                l -&gt; <span class="string">&quot;Left[&quot;</span> + l + <span class="string">&quot;]&quot;</span>,</span><br><span class="line">                r -&gt; <span class="string">&quot;Right[&quot;</span> + r + <span class="string">&quot;]&quot;</span></span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(showEither(left(<span class="string">&quot;foo&quot;</span>))); <span class="comment">// Left[foo]</span></span><br><span class="line">        System.out.println(showEither(right(<span class="number">12450</span>))); <span class="comment">// Right[12450]</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Encode-思路"><a href="#Encode-思路" class="headerlink" title="Encode 思路"></a>Encode 思路</h3><p>将 <em>Haskell</em> 的 <code>Either</code> 与其中的 <code>Left</code> 与 <code>Right</code> 两个 <code>Constructor</code> 在 <em>Java</em> 中写为 <code>Either</code> 类与两个子类；</p>
-<p><em>Java</em> 中 <code>Either</code> 的 <code>match</code> 方法依赖于 <code>Left</code> 与 <code>Right</code> 各自的 <code>Case</code> 接口；</p>
-<p><code>Left</code> 与 <code>Right</code> 各自的 <code>Case</code> 接口与 <code>match</code> 函数重写进行对自身类型的 <em>match</em> ；</p>
-<p><code>match</code> 函数使得外界能够对 <code>Either</code> 进行 <em>Pattern Match</em> 并可以通过简单的 <em>lambda</em> 进行操作。</p>
-<hr>
-<h2 id="GADT"><a href="#GADT" class="headerlink" title="GADT"></a>GADT</h2><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Generalized_algebraic_data_type">Generalized algebraic data type -Wikipedia</a></p>
-<p>让我断章取义一下：</p>
-<blockquote>
-<p>Explicit instantiation of the ADT</p>
-<p>-Wikipedia</p>
-</blockquote>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><p>以一个不知道为什么反正就是叫做 <code>Bag</code> 的东西为例，如果按照与 <em>ADT</em> 相同的思路直接 <em>encode</em> 的话：</p>
-<p><em>Haskell</em> :</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">Bag</span> a where</span></span><br><span class="line">  <span class="type">EmptyBag</span> :: <span class="type">Bag</span> a</span><br><span class="line">  <span class="type">SingletonBag</span> :: a -&gt; <span class="type">Bag</span> a</span><br><span class="line">  <span class="type">StringBag</span> :: [<span class="type">String</span>] -&gt; <span class="type">Bag</span> <span class="type">String</span></span><br></pre></td></tr></table></figure>
-
-<p><em>Java</em> :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Bag</span>&lt;<span class="title">A</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;A&gt; <span class="function">Bag&lt;A&gt; <span class="title">emptyBag</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> EmptyBag&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;A&gt; <span class="function">Bag&lt;A&gt; <span class="title">singletonBag</span><span class="params">(A a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SingletonBag&lt;&gt;(a);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bag&lt;String&gt; <span class="title">stringBag</span><span class="params">(List&lt;String&gt; list)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> StringBag(list);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> &lt;R&gt; <span class="function">R <span class="title">match</span><span class="params">(EmptyBag.Case&lt;A, R&gt; caseEmptyBag,</span></span></span><br><span class="line"><span class="function"><span class="params">                                SingletonBag.Case&lt;A, R&gt; caseSingletonBag,</span></span></span><br><span class="line"><span class="function"><span class="params">                                StringBag.Case&lt;A, R&gt; caseStringBag)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">EmptyBag</span>&lt;<span class="title">A</span>&gt; <span class="keyword">extends</span> <span class="title">Bag</span>&lt;<span class="title">A</span>&gt; </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> &lt;R&gt; <span class="function">R <span class="title">match</span><span class="params">(EmptyBag.Case&lt;A, R&gt; caseEmptyBag,</span></span></span><br><span class="line"><span class="function"><span class="params">                           SingletonBag.Case&lt;A, R&gt; caseSingletonBag,</span></span></span><br><span class="line"><span class="function"><span class="params">                           StringBag.Case&lt;A, R&gt; caseStringBag)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> caseEmptyBag.caseEmptyBag();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Case</span>&lt;<span class="title">A</span>, <span class="title">R</span>&gt; </span>&#123;</span><br><span class="line">            <span class="function">R <span class="title">caseEmptyBag</span><span class="params">()</span></span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonBag</span>&lt;<span class="title">A</span>&gt; <span class="keyword">extends</span> <span class="title">Bag</span>&lt;<span class="title">A</span>&gt; </span>&#123;</span><br><span class="line">        A a;</span><br><span class="line"></span><br><span class="line">        SingletonBag(A a) &#123;</span><br><span class="line">            <span class="keyword">this</span>.a = a;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> &lt;R&gt; <span class="function">R <span class="title">match</span><span class="params">(EmptyBag.Case&lt;A, R&gt; caseEmptyBag,</span></span></span><br><span class="line"><span class="function"><span class="params">                           SingletonBag.Case&lt;A, R&gt; caseSingletonBag,</span></span></span><br><span class="line"><span class="function"><span class="params">                           StringBag.Case&lt;A, R&gt; caseStringBag)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> caseSingletonBag.caseSingletonBag(a);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Case</span>&lt;<span class="title">A</span>, <span class="title">R</span>&gt; </span>&#123;</span><br><span class="line">            <span class="function">R <span class="title">caseSingletonBag</span><span class="params">(A a)</span></span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">StringBag</span> <span class="keyword">extends</span> <span class="title">Bag</span>&lt;<span class="title">String</span>&gt; </span>&#123;</span><br><span class="line">        List&lt;String&gt; list;</span><br><span class="line"></span><br><span class="line">        StringBag(List&lt;String&gt; list) &#123;</span><br><span class="line">            <span class="keyword">this</span>.list = list;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> &lt;R&gt; <span class="function">R <span class="title">match</span><span class="params">(EmptyBag.Case&lt;String, R&gt; caseEmptyBag,</span></span></span><br><span class="line"><span class="function"><span class="params">                           SingletonBag.Case&lt;String, R&gt; caseSingletonBag,</span></span></span><br><span class="line"><span class="function"><span class="params">                           StringBag.Case&lt;String, R&gt; caseStringBag)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> caseStringBag.caseStringBag(list);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Case</span>&lt;<span class="title">A</span>, <span class="title">R</span>&gt; </span>&#123;</span><br><span class="line">            <span class="function">R <span class="title">caseStringBag</span><span class="params">(List&lt;String&gt; list)</span></span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>测试（将 <code>Bag</code> 变成 <code>Maybe(Optional)</code> 并打印）：</p>
-<p><em>Haskell</em> :</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">bag1</span> :: <span class="type">Bag</span> <span class="type">Bool</span></span><br><span class="line"><span class="title">bag1</span> = <span class="type">EmptyBag</span></span><br><span class="line"></span><br><span class="line"><span class="title">bag2</span> :: <span class="type">Bag</span> <span class="type">Float</span></span><br><span class="line"><span class="title">bag2</span> = <span class="type">SingletonBag</span> <span class="number">90.32676</span></span><br><span class="line"></span><br><span class="line"><span class="title">bag3</span> :: <span class="type">Bag</span> <span class="type">String</span></span><br><span class="line"><span class="title">bag3</span> = <span class="type">StringBag</span> [<span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>, <span class="string">&quot;12450&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="title">toMaybe</span> :: <span class="type">Bag</span> a -&gt; <span class="type">Maybe</span> [a]</span><br><span class="line"><span class="title">toMaybe</span> <span class="type">EmptyBag</span> = <span class="type">Nothing</span></span><br><span class="line"><span class="title">toMaybe</span> (<span class="type">SingletonBag</span> a) = <span class="type">Nothing</span></span><br><span class="line"><span class="title">toMaybe</span> (<span class="type">StringBag</span> list) = <span class="type">Just</span> list</span><br><span class="line"></span><br><span class="line"><span class="title">main</span> :: <span class="type">IO</span>()</span><br><span class="line"><span class="title">main</span> = <span class="keyword">do</span></span><br><span class="line">  putStrLn . show $ toMaybe bag1 <span class="comment">-- Nothing</span></span><br><span class="line">  putStrLn . show $ toMaybe bag2 <span class="comment">-- Nothing</span></span><br><span class="line">  putStrLn . show $ toMaybe bag3 <span class="comment">-- Just [&quot;foo&quot;,&quot;bar&quot;,&quot;12450&quot;]</span></span><br></pre></td></tr></table></figure>
-
-<p><em>Java</em> :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BagTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Bag&lt;?&gt; bag1 = emptyBag();</span><br><span class="line">        Bag&lt;Float&gt; bag2 = singletonBag(<span class="number">90.32676F</span>);</span><br><span class="line">        Bag&lt;String&gt; bag3 = stringBag(List.of(<span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>, <span class="string">&quot;12450&quot;</span>));</span><br><span class="line"></span><br><span class="line">        System.out.println(bagToMaybe(bag1));</span><br><span class="line">        System.out.println(bagToMaybe(bag2));</span><br><span class="line">        System.out.println(bagToMaybe(bag3));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;A&gt; Optional&lt;List&lt;A&gt;&gt; bagToMaybe(Bag&lt;A&gt; unknownBag) &#123;</span><br><span class="line">        <span class="keyword">return</span> unknownBag.match(</span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                    Required type: Optional &lt;List&lt;A&gt;&gt;</span></span><br><span class="line"><span class="comment">                    Provided: Optional &lt;Object&gt;</span></span><br><span class="line"><span class="comment">                    Incompatible parameter types in lambda expression</span></span><br><span class="line"><span class="comment">                 */</span></span><br><span class="line">                () -&gt; Optional.empty(),</span><br><span class="line">                a -&gt; Optional.empty(),</span><br><span class="line">                (list, id) -&gt; Optional.of(list)</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>为了方便解释，所以暂时将 <code>SingletonBag</code> 也 <em>map</em> 到 <em>Nothing</em> 。</p>
-<p>就报错了，原因是在这里 <strong><em>Java</em> 无法进行 <code>A</code> 与 <code>String</code> 的 <code>equality</code> 推导</strong>。</p>
-<p>如果可以证明，那么其实之后就是一个 <code>String</code> <em>-&gt;</em> <code>A</code> 的过程，将 <em>GADT</em> 又变回了 <em>ADT</em> 。而上文又证明了 <em>ADT</em> 在 <em>Java</em> 中是可以写出来的。</p>
-<hr>
-<h2 id="Identity-Type"><a href="#Identity-Type" class="headerlink" title="Identity Type"></a>Identity Type</h2><p>证明类型的等价性，可以用到 <strong><em>Identity Type</em></strong> 。</p>
-<p><a target="_blank" rel="noopener" href="https://ncatlab.org/nlab/show/identity+type">identity type -nLab</a></p>
-<p>一些 <code>Identity Type</code> 工具代码：</p>
-<p><em>Haskell</em> :</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">Id</span> a b where</span></span><br><span class="line">  <span class="type">Refl</span> :: <span class="type">Id</span> a a</span><br><span class="line"></span><br><span class="line"><span class="title">refl</span> :: <span class="type">Id</span> a a</span><br><span class="line"><span class="title">refl</span> = <span class="type">Refl</span></span><br><span class="line"></span><br><span class="line"><span class="title">symm</span> :: <span class="type">Id</span> a b -&gt; <span class="type">Id</span> b a</span><br><span class="line"><span class="title">symm</span> <span class="type">Refl</span> = <span class="type">Refl</span></span><br><span class="line"></span><br><span class="line"><span class="title">trans</span> :: <span class="type">Id</span> a b -&gt; <span class="type">Id</span> b c -&gt; <span class="type">Id</span> a c</span><br><span class="line"><span class="title">trans</span> <span class="type">Refl</span> <span class="type">Refl</span> = <span class="type">Refl</span></span><br><span class="line"></span><br><span class="line"><span class="title">cong</span> :: <span class="type">Id</span> a b -&gt; <span class="type">Id</span> (f a) (f b)</span><br><span class="line"><span class="title">cong</span> <span class="type">Refl</span> = <span class="type">Refl</span></span><br><span class="line"></span><br><span class="line"><span class="title">subst</span> :: <span class="type">Id</span> a b -&gt; f a -&gt; f b</span><br><span class="line"><span class="title">subst</span> <span class="type">Refl</span> = id</span><br><span class="line"></span><br><span class="line"><span class="title">coerce</span> :: <span class="type">Id</span> a b -&gt; a -&gt; b</span><br><span class="line"><span class="title">coerce</span> <span class="type">Refl</span> = id</span><br></pre></td></tr></table></figure>
-
-<p><em>Java</em> :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Id</span>&lt;<span class="title">A</span>, <span class="title">B</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;A&gt; <span class="function">Id&lt;A, A&gt; <span class="title">refl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Refl&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Id&lt;B, A&gt; <span class="title">symm</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> &lt;C&gt; <span class="function">Id&lt;A, C&gt; <span class="title">trans</span><span class="params">(Id&lt;B, C&gt; id)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> B <span class="title">coerce</span><span class="params">(A a)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> &lt;X, Y&gt; <span class="function">Y <span class="title">subst</span><span class="params">(X x)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> &lt;R&gt; <span class="function">R <span class="title">match</span><span class="params">(Refl.Case&lt;A, B, R&gt; caseRefl)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Match</span>&lt;<span class="title">A</span>, <span class="title">B</span>, <span class="title">R</span>&gt; <span class="keyword">extends</span> <span class="title">Refl</span>.<span class="title">Case</span>&lt;<span class="title">A</span>, <span class="title">B</span>, <span class="title">R</span>&gt; </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Refl</span>&lt;<span class="title">A</span>&gt; <span class="keyword">extends</span> <span class="title">Id</span>&lt;<span class="title">A</span>, <span class="title">A</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Id&lt;A, A&gt; <span class="title">symm</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> refl();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> &lt;C&gt; <span class="function">Id&lt;A, C&gt; <span class="title">trans</span><span class="params">(Id&lt;A, C&gt; id)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> id;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> A <span class="title">coerce</span><span class="params">(A a)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> &lt;X, Y&gt; <span class="function">Y <span class="title">subst</span><span class="params">(X x)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (Y) x;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Case</span>&lt;<span class="title">A</span>, <span class="title">B</span>, <span class="title">R</span>&gt; </span>&#123;</span><br><span class="line">            <span class="function">R <span class="title">caseRefl</span><span class="params">()</span></span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> &lt;R&gt; <span class="function">R <span class="title">match</span><span class="params">(Refl.Case&lt;A, A, R&gt; caseRefl)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> caseRefl.caseRefl();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后利用 <code>Id</code> 来证明 <code>StringBag</code> 与 <code>A</code> 的 <code>equality</code> ，对原有代码进行一些修改，关注 <code>StringBag</code> 相关的部分：</p>
-<p><em>Haskell</em> :</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">Bag</span> a where</span></span><br><span class="line">  <span class="type">EmptyBag</span> :: <span class="type">Bag</span> a</span><br><span class="line">  <span class="type">SingletonBag</span> :: a -&gt; <span class="type">Bag</span> a</span><br><span class="line">  <span class="comment">-- StringBag :: [String] -&gt; Bag String</span></span><br><span class="line">  <span class="type">StringBag</span> :: [<span class="type">String</span>] -&gt; <span class="type">Id</span> <span class="type">String</span> a -&gt; <span class="type">Bag</span> a <span class="comment">-- Use Id to infer the equivalence of String and a, return GADT back to ADT</span></span><br><span class="line"></span><br><span class="line"><span class="title">bag3</span> :: <span class="type">Bag</span> <span class="type">String</span></span><br><span class="line"><span class="comment">-- bag3 = StringBag [&quot;foo&quot;, &quot;bar&quot;, &quot;12450&quot;]</span></span><br><span class="line"><span class="title">bag3</span> = <span class="type">StringBag</span> [<span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>, <span class="string">&quot;12450&quot;</span>] <span class="type">Refl</span></span><br><span class="line"></span><br><span class="line"><span class="title">toMaybe</span> :: <span class="type">Bag</span> a -&gt; <span class="type">Maybe</span> [a]</span><br><span class="line"><span class="title">toMaybe</span> <span class="type">EmptyBag</span> = <span class="type">Nothing</span></span><br><span class="line"><span class="title">toMaybe</span> (<span class="type">SingletonBag</span> a) = <span class="type">Just</span> [a]</span><br><span class="line"><span class="comment">-- toMaybe (StringBag list) = Just list</span></span><br><span class="line"><span class="title">toMaybe</span> (<span class="type">StringBag</span> list anId) = <span class="type">Just</span> $ subst anId list</span><br></pre></td></tr></table></figure>
-<p>其实 <em>Haskell</em> 自己是可以推导出 <code>A</code> 与 <code>String</code> 的 <code>equality</code> 的，这段可以不改。</p>
-<p><em>Java</em> :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Bag</span>&lt;<span class="title">A</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Use Id(Identity type) to infer the equivalence of String and a, return GADT back to ADT.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">StringBag</span> <span class="keyword">extends</span> <span class="title">Bag</span>&lt;<span class="title">String</span>&gt; </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> &lt;R&gt; <span class="function">R <span class="title">match</span><span class="params">(EmptyBag.Case&lt;String, R&gt; caseEmptyBag,</span></span></span><br><span class="line"><span class="function"><span class="params">                           SingletonBag.Case&lt;String, R&gt; caseSingletonBag,</span></span></span><br><span class="line"><span class="function"><span class="params">                           StringBag.Case&lt;String, R&gt; caseStringBag)</span> </span>&#123;</span><br><span class="line"><span class="comment">//            return caseStringBag.caseStringBag(list);</span></span><br><span class="line">            <span class="keyword">return</span> caseStringBag.caseStringBag(list, refl());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Case</span>&lt;<span class="title">A</span>, <span class="title">R</span>&gt; </span>&#123;</span><br><span class="line"><span class="comment">//            R caseStringBag(List&lt;String&gt; list);</span></span><br><span class="line">            <span class="comment">// use Id(Identity type) to proof equality of A and String</span></span><br><span class="line">            <span class="function">R <span class="title">caseStringBag</span><span class="params">(List&lt;String&gt; list, Id&lt;String, A&gt; id)</span></span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BagTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;A&gt; Optional&lt;List&lt;A&gt;&gt; bagToMaybe(Bag&lt;A&gt; unknownBag) &#123;</span><br><span class="line">        <span class="keyword">return</span> unknownBag.match(</span><br><span class="line">                () -&gt; Optional.empty(), <span class="comment">// Optional.empty</span></span><br><span class="line">                a -&gt; Optional.empty(), <span class="comment">// Optional.empty</span></span><br><span class="line">                (list, id) -&gt; Optional.of(id.subst(list)) <span class="comment">// Optional[[foo, bar, 12450]]</span></span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样看上去就成功将 <em>Haskell</em> 的 <em>GADT</em> 给 <em>encode</em> 到了 <em>Java</em> 里，但实际上， <em>Java</em> 的 <code>Id</code> 中的 <code>Refl.subst(X x) : Y</code> 方法不是绝对安全的，只能开发者自己去保证安全，这是 <em>Java</em> 没有实现的东西（<code>higher kind</code>）。</p>
-<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Kind_(type_theory)">Kind (type theory) -Wikipedia</a></p>
-<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lambda_cube">Lambda cube -Wikipedia</a></p>
-<img src="/images/LambdaCube.png" alt="LabmdaCube" width="256" height="256">
-
-<blockquote>
-<p>higher kinded type 就是 λ<ins>ω</ins></p>
-</blockquote>
-<hr>
-<h3 id="修改-SingletonBag"><a href="#修改-SingletonBag" class="headerlink" title="修改 SingletonBag"></a>修改 SingletonBag</h3><p>既然知道了解决方案，那么 <code>SingletonBag</code> 也可以进行修改，证明 <code>A</code> 与 <code>A</code> 的等价性：</p>
-<p><em>Haskell</em> 的代码就不放了，比较简单。</p>
-<p><em>Java</em> :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonBag</span>&lt;<span class="title">A</span>&gt; <span class="keyword">extends</span> <span class="title">Bag</span>&lt;<span class="title">A</span>&gt; </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> &lt;R&gt; <span class="function">R <span class="title">match</span><span class="params">(EmptyBag.Case&lt;A, R&gt; caseEmptyBag,</span></span></span><br><span class="line"><span class="function"><span class="params">                           SingletonBag.Case&lt;A, R&gt; caseSingletonBag,</span></span></span><br><span class="line"><span class="function"><span class="params">                           StringBag.Case&lt;A, R&gt; caseStringBag)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> caseSingletonBag.caseSingletonBag(a, refl());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Case</span>&lt;<span class="title">A</span>, <span class="title">R</span>&gt; </span>&#123;</span><br><span class="line">            <span class="function">R <span class="title">caseSingletonBag</span><span class="params">(A a, Id&lt;A, A&gt; id)</span></span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BagTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;A&gt; Optional&lt;List&lt;A&gt;&gt; bagToMaybe(Bag&lt;A&gt; unknownBag) &#123;</span><br><span class="line">        <span class="keyword">return</span> unknownBag.match(</span><br><span class="line">                () -&gt; Optional.empty(), <span class="comment">// Optional.empty</span></span><br><span class="line">                (a, id) -&gt; Optional.of(id.subst(Collections.singletonList(a))), <span class="comment">// Optional[[90.32676]]</span></span><br><span class="line">                (list, id) -&gt; Optional.of(id.subst(list)) <span class="comment">// Optional[[foo, bar, 12450]]</span></span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>特别鸣谢：</p>
-<ul>
-<li>雨轩（<a target="_blank" rel="noopener" href="https://github.com/yuxuanchiadm">github.com/yuxuanchiadm</a>）</li>
-<li>90（<a target="_blank" rel="noopener" href="https://github.com/a9032676">github.com/a9032676</a>）</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/21/Encode-ADT-and-GADT-form-Haskell-to-Java/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -399,10 +319,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-10-19 09:52:02 / 修改时间：10:24:56" itemprop="dateCreated datePublished" datetime="2020-10-19T09:52:02+08:00">2020-10-19</time>
+              <time title="创建时间：2020-10-19 09:52:02" itemprop="dateCreated datePublished" datetime="2020-10-19T09:52:02+08:00">2020-10-19</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-22 12:02:21" itemprop="dateModified" datetime="2020-10-22T12:02:21+08:00">2020-10-22</time>
+              </span>
 
           
 
@@ -415,7 +341,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <hr>
+          <a id="more"></a>
+
+<hr>
 <p>下面Java代码的运行结果是：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Penguin</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name=<span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> health=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">private</span> String sex=<span class="keyword">null</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Penguin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		health = <span class="number">10</span>;</span><br><span class="line">		sex = <span class="string">&quot;male&quot;</span>;</span><br><span class="line">		System.out.println(<span class="string">&quot;Constructor.&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;Name: &quot;</span> + name + </span><br><span class="line">				<span class="string">&quot;, Health: &quot;</span> + health + <span class="string">&quot;, Gender: &quot;</span> + sex);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Penguin pgn = <span class="keyword">new</span> Penguin();</span><br><span class="line">		pgn.print();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -481,10 +409,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-10-17 09:28:46 / 修改时间：15:09:58" itemprop="dateCreated datePublished" datetime="2020-10-17T09:28:46+08:00">2020-10-17</time>
+              <time title="创建时间：2020-10-17 09:28:46" itemprop="dateCreated datePublished" datetime="2020-10-17T09:28:46+08:00">2020-10-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-22 12:02:18" itemprop="dateModified" datetime="2020-10-22T12:02:18+08:00">2020-10-22</time>
+              </span>
 
           
 
@@ -497,7 +431,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <hr>
+          <a id="more"></a>
+
+<hr>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">　　<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">addValue</span><span class="params">( <span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    　　<span class="keyword">int</span> s;</span><br><span class="line">    　　s = a+b;</span><br><span class="line">    　　<span class="keyword">return</span> s;</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>哪些方法可以加入类Child中?</p>
@@ -590,7 +526,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-16 10:51:01" itemprop="dateModified" datetime="2020-10-16T10:51:01+08:00">2020-10-16</time>
+                <time title="修改时间：2020-10-22 12:01:15" itemprop="dateModified" datetime="2020-10-22T12:01:15+08:00">2020-10-22</time>
               </span>
 
           
@@ -609,80 +545,14 @@
 <p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%A4%9A%E6%80%81/2282489?fr=aladdin#1">重载和多态无关</a> -百度百科</p>
 </blockquote>
 <p><img src="/images/RenHua.jpg" alt="人话？"></p>
-<h2 id="提前声明"><a href="#提前声明" class="headerlink" title="提前声明"></a>提前声明</h2><p>本篇文章十分主观，可能也有错误阐述，欢迎纠错。</p>
-<p>因为有许多的单词并没有中文翻译，或者个人认为翻译不恰当，所以有的直接用英文来阐述。（我才不管翻译得对不对，我就这么理解）</p>
-<p>不需要硬翻译成中文，毕竟可能会发生像“子函子范畴上的幺半群”这种奇怪的事情（明明是范畴论的东西，和群什么关系啊（小声））。</p>
-<h2 id="多态的种类"><a href="#多态的种类" class="headerlink" title="多态的种类"></a>多态的种类</h2><p>就先列出来。</p>
-<ol>
-<li><strong>Ad hoc polymorphism</strong></li>
-<li><strong>Parametric polymorphism</strong></li>
-<li><strong>Subtyping (Subtype Polymorphism)</strong></li>
-<li>Row Polymorphism</li>
-<li>Polytypism</li>
-</ol>
-<p>其实还有一些其他的，但是其实在实际开发中比较重要的就是这五个中的<strong>前三个</strong>。</p>
-<h2 id="Ad-hoc-polymorphism"><a href="#Ad-hoc-polymorphism" class="headerlink" title="Ad hoc polymorphism"></a>Ad hoc polymorphism</h2><blockquote>
-<p>… <strong>polymorphic functions can be applied to arguments of different types</strong>, because a polymorphic function can denote a number of distinct and potentially heterogeneous implementations depending on the type of argument(s) to which it is applied.</p>
-<p>-Wikipedia</p>
-</blockquote>
-<p>如果你不太想看上面这段英文的话，可以直接看我的理解。</p>
-<p>这里给一段 C++ 的栗子：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// unreasonable but whatever</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">add</span><span class="params">(<span class="keyword">double</span> a, <span class="keyword">double</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b + <span class="number">9032</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这里请注意上面那段维基引用之中的：<strong>函数能够通过被应用的参数的不同类型来选择不同的实现方式。</strong></p>
-<p>这话什么意思？</p>
-<p><strong>Overload</strong> ，函数重载。</p>
-<p>行，先把百度百科的头锤爆。</p>
-<h2 id="Parametric-polymorphism"><a href="#Parametric-polymorphism" class="headerlink" title="Parametric polymorphism"></a>Parametric polymorphism</h2><blockquote>
-<p>Using parametric polymorphism, a function or a data type can be written generically so that it can handle values identically without depending on their type.</p>
-<p>-Wikipedia</p>
-</blockquote>
-<p>还是先放Wiki的阐述。</p>
-<p><strong>对数据进行统一操作，而不在意它们的类型。</strong></p>
-<p>其实就是 <strong>Generic Types</strong> ，泛型。</p>
-<p>同样都是一个函数接受多种参数类型，那么 <code>Parametric</code> 和 <code>Ad hoc</code> 的区别呢？</p>
-<blockquote>
-<p>Thus, ad hoc polymorphism can generally only support a limited number of such distinct types, since a separate implementation has to be provided for each type.</p>
-<p>-Wikipedia</p>
-</blockquote>
-<p><code>Ad hoc</code> 基本上会对每种不同的参数类型有不同的实现方式，因此数量有限；</p>
-<p><code>Parametric</code> 对所有参数类型一视同仁，都是同一种实现。</p>
-<p>然后再贴一段 C++ STL 里的东西：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">vector</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push_back</span><span class="params">(T&amp;&amp; val)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// ... do push back</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这是 <code>std::vector</code> 的声明，一般的 oop 语言类库中的容器类都会用到泛型。</p>
-<p>为什么不给 Java 的呢，因为 <a href="https://tomotopieces.github.io/2020/09/08/%E7%A6%BB%E8%B0%B1%E7%9A%84Java%E6%B3%9B%E5%9E%8B/">Java 嘛…</a></p>
-<h2 id="SubTyping"><a href="#SubTyping" class="headerlink" title="SubTyping"></a>SubTyping</h2><blockquote>
-<p>subtyping allows a function to be written to take an object of a certain type T, but also work correctly, if passed an object that belongs to <strong>a type S that is a subtype of T.</strong></p>
-<p>-Wikipedia</p>
-</blockquote>
-<p>这东西就很好理解了，字面意思，子类多态。</p>
-<p>体现在代码上的话就是类之间的<strong>继承</strong>关系，<strong>能出现父类对象的地方，必定能出现子类对象（里氏代换原则）。</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Super</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="number">9527</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub</span></span></span><br><span class="line"><span class="class">    :</span> <span class="keyword">public</span> Super</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span> <span class="keyword">override</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Stephen Chow&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">invoker</span><span class="params">(Super&amp; object)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    object.func();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Sub sub;</span><br><span class="line">    invoker(sub); <span class="comment">// Stephen Chow</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>以下是我对 <code>Override</code> 的理解：</p>
-<p>所有的类的 <code>non-static</code> 方法，都隐式包含了一个参数： <code>this</code> ，其类型不言而喻。子类对父类中的方法进行重写，实际上就是改变了参数表的第一个参数的类型。</p>
-<p><strong><code>Override</code> 是一种特殊的 <code>Overload</code> 。</strong></p>
-<p>那么自然，<code>Override</code> ，函数重写（或者说覆盖），就是基于 <code>SubTyping</code> 的 <code>Ad hoc polymorphism</code> 的一种体现。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>上面三者几乎囊括了 oop 语言中的所有多态，可以这样说：</p>
-<ul>
-<li><p>重载是 <code>Ad hoc polymorphism</code> 的体现；</p>
-</li>
-<li><p>泛型是 <code>Parametric polymorphism</code> 的体现；</p>
-</li>
-<li><p>继承是 <code>Subtyping</code> 的体现。</p>
-</li>
-</ul>
-<hr>
-<p>参考文献：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Polymorphism_(computer_science)">Polymorphism -Wikipeida</a></li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/15/My-opinion-on-Plymorphism/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -732,7 +602,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-16 10:48:43" itemprop="dateModified" datetime="2020-10-16T10:48:43+08:00">2020-10-16</time>
+                <time title="修改时间：2020-10-22 12:01:09" itemprop="dateModified" datetime="2020-10-22T12:01:09+08:00">2020-10-22</time>
               </span>
 
           
@@ -746,50 +616,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>那么下面这段代码发生了什么？</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Super</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">name</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;IzzelAliz&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sub</span> <span class="keyword">extends</span> <span class="title">Super</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">name</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Tomoto&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果你认为 <code>Sub</code> 类对 <code>Super</code> 类中的 <code>String name()</code> 方法进行了 <code>Override</code> 重写，那么你就错了。可以尝试执行下面的代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Super s = <span class="keyword">new</span> Sub();</span><br><span class="line">System.out.println(s.name()); <span class="comment">// IzzelAliz</span></span><br></pre></td></tr></table></figure>
-
-<p>打印结果是 <code>IzzelAliz</code> ，这是证明 <code>String name()</code> 方法没有被 <code>Override</code> 的有力证据。</p>
-<h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><p>先来说关键字 <code>static</code> 。这个词的原意是 <em>静态</em> 。那么在了解静态的时候，就可以拿出与其相对的 <em>动态</em> 来进行比较，便于理解。</p>
-<h2 id="用-C-来阐述"><a href="#用-C-来阐述" class="headerlink" title="用 C++ 来阐述"></a>用 C++ 来阐述</h2><p>请允许我在这里用 C++ 的语法来进行对比。如果没有接触过 C++ 也没有关系，相信你能看懂这段代码的大意。以上代码类比到 C++ 中大概如此：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Super</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="built_in">std</span>::<span class="built_in">string</span> <span class="title">name</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::<span class="built_in">string</span>(<span class="string">&quot;IzzelAliz&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub</span></span></span><br><span class="line"><span class="class">  :</span> <span class="keyword">public</span> Super</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="built_in">std</span>::<span class="built_in">string</span> <span class="title">name</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::<span class="built_in">string</span>(<span class="string">&quot;Tomoto&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>如果您写过 C++ ，那么不难发现，在这段代码中， <code>Sub</code> 类的 <code> std::string name()</code> 方法其实 <strong>并没有重写</strong> 。下面这段代码的打印结果与 Java 中的结果一样，是 <code>IzzelAliz</code> 。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Super* super = <span class="keyword">new</span> Sub();</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; super-&gt;name() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// IzzelAliz</span></span><br></pre></td></tr></table></figure>
-
-<p>关于虚函数表的内容这里不展开，感兴趣的可以查阅维基: <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Virtual_method_table">Virtual Method table -Wikipedia</a></p>
-<h2 id="dynamic"><a href="#dynamic" class="headerlink" title="dynamic"></a>dynamic</h2><p>在 C++ 中，如果要在子类中重写父类的方法，需要用到关键字 <code>virtual</code> 和 <code>override</code> 。</p>
-<p><strong>C++ 中，只有带有 <code>virtual</code> 关键字的方法（虚方法）才能被重写。</strong></p>
-<p><code>override</code> 可有可无，但是一般都会加上，作用类似于 Java 中的 <code>@Override</code> 注解。我们先来重写一个一般的方法。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Super</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="keyword">int</span> <span class="title">number</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">42</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub</span></span></span><br><span class="line"><span class="class">  :</span> <span class="keyword">public</span> Super</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">number</span><span class="params">()</span> <span class="keyword">override</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">9032676</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><code>virtual</code> 实际上进行了 <strong>动态绑定（dynamic bind）</strong> 。是多态的一种表现。那么如果我们将这个 <strong>动态</strong> 的关键字用在 <strong>静态</strong> 关键字 <code>staitc</code> 上，会怎么样？答案是报错。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Super</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="keyword">static</span> <span class="built_in">std</span>::<span class="built_in">string</span> <span class="title">name</span><span class="params">()</span> <span class="comment">// Only non-static member functions may be virtual</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::<span class="built_in">string</span>(<span class="string">&quot;IzzelAliz&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>这是肯定的，毕竟 <strong>静态</strong> 和 <strong>动态</strong> 是一对反义词，凑在一起那肯定就自相矛盾了。也就是说：</p>
-<p><strong>静态方法无法被重写。</strong></p>
-<h2 id="Java-是怎么做的"><a href="#Java-是怎么做的" class="headerlink" title="Java 是怎么做的"></a>Java 是怎么做的</h2><p>让我们再回到 Java 中。</p>
-<p>可以这样理解：在 Java 中，每个一般方法都隐式带有 <code>virtual</code> 关键字，除非声明了 <code>final</code> 或者 <code>static</code> 。我们现在再看回最开始的那段代码，尝试打印，结果是 <code>IzzelAliz</code> 。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Super s = <span class="keyword">new</span> Sub();</span><br><span class="line">System.out.println(s.name()); <span class="comment">// IzzelAliz</span></span><br></pre></td></tr></table></figure>
-
-<p>所以：</p>
-<p><strong><code>String Super.name()</code> 与 <code>String Sub.name()</code> 实际上是两个完全不相干的方法</strong>。</p>
-<p>他们所属的类具有继承关系，但是它们两个方法之间没有任何关系，只是单纯的名字相同。如果你尝试在 <code>String Sub.name()</code> 方法之前加上 <code>@Override</code> 注解，那么编译器会产生一个错误。</p>
-<hr>
-<p>特别鸣谢：</p>
-<ul>
-<li>海螺（<a href="Izzel.io">Izzel.io</a>）</li>
-</ul>
-
+          <p>下面这段代码发生了什么？</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/15/Java-static-method-cannot-be-overridden/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -831,10 +666,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-10-14 10:37:25 / 修改时间：11:35:39" itemprop="dateCreated datePublished" datetime="2020-10-14T10:37:25+08:00">2020-10-14</time>
+              <time title="创建时间：2020-10-14 10:37:25" itemprop="dateCreated datePublished" datetime="2020-10-14T10:37:25+08:00">2020-10-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-22 12:00:57" itemprop="dateModified" datetime="2020-10-22T12:00:57+08:00">2020-10-22</time>
+              </span>
 
           
 
@@ -848,65 +689,14 @@
 
       
           <p>一些 IDEA 的使用经验累积，尽量脱离鼠标。</p>
-<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><h3 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h3><ol start="2">
-<li>debug 逐步: <code>F8</code></li>
-<li>debug 进入: <code>F7</code></li>
-<li>debug 继续: <code>F9</code></li>
-</ol>
-<h3 id="代码书写"><a href="#代码书写" class="headerlink" title="代码书写"></a>代码书写</h3><ol start="0">
-<li>自动补全: <code>Tab</code></li>
-<li><strong>通用</strong>: <code>Alt Enter</code><ul>
-<li>解决方案</li>
-<li>代码简化</li>
-<li>添加局部变量</li>
-<li>创建类或方法的 Javedoc 注释</li>
-<li>创建域的 Setter Getter</li>
-<li>错字</li>
-</ul>
-</li>
-<li>添加断点: <code>Ctrl F8</code></li>
-<li>生成代码: <code>Alt Insert</code><ul>
-<li>构造器</li>
-<li>Getter Setter</li>
-<li>JUnit 测试类</li>
-</ul>
-</li>
-<li>重载: <code>Ctrl O</code></li>
-<li>生成 main 函数: <code>[main] Tab</code> / <code>[psvm] Tab</code></li>
-<li>输出: <code>[sout] Tab</code> / <code>[.sout] Tab</code></li>
-<li>类型转换: <code>[.cast] Tab</code></li>
-<li>注释/取消注释当前行: <code>Ctrl /</code></li>
-<li>重构: <code>Shift F6</code></li>
-<li>代码重新排版: <code>Ctrl Alt L</code></li>
-<li>往下添加空行并转到: <code>Ctrl Shift Enter</code></li>
-<li>往上添加空行并转到: <code>Ctrl Alt Enter</code></li>
-</ol>
-<h3 id="代码渲染"><a href="#代码渲染" class="headerlink" title="代码渲染"></a>代码渲染</h3><ol>
-<li>折叠代码块: <code>Ctrl -</code></li>
-<li>打开代码块: <code>Ctrl +</code></li>
-<li>注释渲染: <code>Ctrl Alt Q</code></li>
-</ol>
-<h3 id="切换"><a href="#切换" class="headerlink" title="切换"></a>切换</h3><ol>
-<li>转到定义: <code>Ctrl B</code></li>
-<li>代码文件间切换: <code>Ctrl E</code></li>
-<li>切换到 <em>Project</em> 视窗: <code>Alt 1</code></li>
-<li>切换到 <em>Run</em> 视窗: <code>Alt 4</code></li>
-<li>切换到 代码 视窗: <code>Esc</code></li>
-</ol>
-<h3 id="Project-视窗"><a href="#Project-视窗" class="headerlink" title="Project 视窗"></a><em>Project</em> 视窗</h3><ol>
-<li>创建新事物: <code>Alt Insert</code></li>
-</ol>
-<h3 id="调试运行"><a href="#调试运行" class="headerlink" title="调试运行"></a>调试运行</h3><ol>
-<li>将当前类设置为 Main class 并运行: <code>Ctrl Shift F10</code></li>
-<li>运行: <code>Shift F10</code></li>
-<li>Debug: <code>Shift F9</code></li>
-</ol>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ol>
-<li><strong>全局搜索</strong>: <code>Shift Shift</code></li>
-</ol>
-<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><h3 id="软换行"><a href="#软换行" class="headerlink" title="软换行"></a>软换行</h3><p><code>Soft-wrap</code> -&gt; <code>ON</code></p>
-<h3 id="链式-Setter"><a href="#链式-Setter" class="headerlink" title="链式 Setter"></a>链式 Setter</h3><p><code>Generate Setters</code> -&gt; <code>Setter template</code> -&gt; <code>Builder</code></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/14/IDEAaccumulation-2020-10-14/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -956,7 +746,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-22 11:17:55" itemprop="dateModified" datetime="2020-10-22T11:17:55+08:00">2020-10-22</time>
+                <time title="修改时间：2020-10-22 11:59:08" itemprop="dateModified" datetime="2020-10-22T11:59:08+08:00">2020-10-22</time>
               </span>
 
           
@@ -971,38 +761,14 @@
 
       
           <p>今天见到了好多种快速排序···感觉和我想象中的都不一样。</p>
-<h2 id="Haskell-实现"><a href="#Haskell-实现" class="headerlink" title="Haskell 实现"></a>Haskell 实现</h2><p>先放一张我认为的快排的 <code>Haskell</code> 实现，简单易懂：</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">qsort</span> :: <span class="type">Int</span>[] -&gt; <span class="type">Int</span>[]</span><br><span class="line"><span class="title">qsort</span> [] = []</span><br><span class="line"><span class="title">qsort</span> (x:xs) = qsort left ++ [x] ++ qsort right</span><br><span class="line">  <span class="keyword">where</span></span><br><span class="line">    left = [y | y&lt;=xs, y &lt; x]</span><br><span class="line">    right = [y | y&lt;=xs, y &gt;= x]</span><br></pre></td></tr></table></figure>
-
-<h2 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h2><p>我认为快速排序的核心思想是<strong>分而治之</strong>，将数组头去除后的部分以数组头为界进行分类，然后将分类后的小数组再次去头然后分类处理，以此循环，直到数组长度为 1 。</p>
-<h2 id="逻辑顺序"><a href="#逻辑顺序" class="headerlink" title="逻辑顺序"></a>逻辑顺序</h2><ol>
-<li>取数组首元素 key</li>
-<li>从第二个元素开始遍历数组</li>
-<li>比 key 小的元素放进数组 left</li>
-<li>比 key 大的元素放进数组 right</li>
-<li>将 left 与 right 各自排序（递归）</li>
-<li>连接 left + key + right</li>
-</ol>
-<hr>
-<pre><code>[9, 0, 3, 2, 6, 7, 6]
- ^
-
-[0, 3, 2, 6, 7, 6] 9 []
- ^
-
-[0 [3, 2, 6, 7, 6]] 9 []
-    ^
-
-[0 [[2] 3 [6, 7, 6]]] 9 []
-           ^
-
-[0 [[2] 3 [6 [7, 6]]]] 9 []
-              ^
-
-[0 [[2] 3 [6 [[6] 7]]]] 9 []
-
-[0, 2, 3, 6, 6, 7, 9]</code></pre>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/09/About-quick-sort/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1052,7 +818,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-22 11:16:31" itemprop="dateModified" datetime="2020-10-22T11:16:31+08:00">2020-10-22</time>
+                <time title="修改时间：2020-10-22 12:00:35" itemprop="dateModified" datetime="2020-10-22T12:00:35+08:00">2020-10-22</time>
               </span>
 
           
@@ -1066,7 +832,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>晚上妈突然给我点外卖···牛肉面，我还蛮期待的。</p>
+          <a id="more"></a>
+
+<p>晚上妈突然给我点外卖···牛肉面，我还蛮期待的。</p>
 <p>等外卖快送到了，骑手打电话问我地址是哪，确定是九号楼吗，确定是第二个楼梯间吗之类的，就这样讨论了半天···</p>
 <p>讨论出来最后的结果是搞错地方了，同名的小区···妈给我点到其他地方去了···笑死，电话号码显示的来源是贵州贵阳，嗐。</p>
 
@@ -1119,7 +887,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-22 11:16:37" itemprop="dateModified" datetime="2020-10-22T11:16:37+08:00">2020-10-22</time>
+                <time title="修改时间：2020-10-22 12:00:37" itemprop="dateModified" datetime="2020-10-22T12:00:37+08:00">2020-10-22</time>
               </span>
 
           
@@ -1133,7 +901,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>虽然今天是 6 号，但记录的是昨天的事情，问题不大。</p>
+          <a id="more"></a>
+
+<p>虽然今天是 6 号，但记录的是昨天的事情，问题不大。</p>
 <p>好久没玩跳舞机，跳了个爽。福州这边都没什么人跳的吗。</p>
 <p>午饭吃完回来后又去玻璃盒子里唱歌。唱完了去玩了会儿舞立方。玩到一半有一男两女来了，其中一个妹子玩旁边的那台机子。玩了几首歌之后在走之前竟然还来要了我的微信，奇妙。以前也有这样的经历，在干什么我给忘了，也有妹子来要微信。</p>
 <p>想起来上次和海底捞组合去狮子桥那边的什么风云什么的游戏厅，啊，风云再起，对，在里面跳，当时也和一个路人妹子跳，那个妹子我记得很可爱，但结束了也没留联系方式什么的，反正留了也没用···那时候也很快乐。</p>

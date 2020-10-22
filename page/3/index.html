@@ -179,7 +179,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-22 11:24:28" itemprop="dateModified" datetime="2020-10-22T11:24:28+08:00">2020-10-22</time>
+                <time title="修改时间：2020-10-22 12:00:26" itemprop="dateModified" datetime="2020-10-22T12:00:26+08:00">2020-10-22</time>
               </span>
 
           
@@ -193,7 +193,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="做梦"><a href="#做梦" class="headerlink" title="做梦"></a>做梦</h2><p>好久没做过这种醒来后没忘掉的梦了，在忘掉之前先记下来。</p>
+          <a id="more"></a>
+
+<h2 id="做梦"><a href="#做梦" class="headerlink" title="做梦"></a>做梦</h2><p>好久没做过这种醒来后没忘掉的梦了，在忘掉之前先记下来。</p>
 <p>在大字路口沙拉斯和蜜雪冰城的中间那里不知道为什么设立了交通检查，执岗警察是黄秋生。一堆人不管是走路的还是有车的都在那里排队检查。查到我的时候我慌了，以为是检查在此之前遭遇的事情。具体遭遇过的是什么事情不知道。然后就说漏嘴了，被带到了就旁边的政府旁边的一个不知道是什么地方，就在街边，像是休息站。填了一张不知道是什么的表之后，黄 sir 让那边的助理妹子给我搞了杯珍珠奶茶，让我到旁边房间去休息一下，我喝完就躺在那里面睡着了。醒来之后的剧情忘了。</p>
 <p>什么鬼剧情，为什么是黄秋生，好久没看香港警匪片了；还有奶茶，为什么是奶茶，好久没喝奶茶了已经。</p>
 <h2 id="OpenGL"><a href="#OpenGL" class="headerlink" title="OpenGL"></a>OpenGL</h2><p>因为在写 Java ，所以就想着用 LWJGL 来学 OpenGL ，可是找了两天，都没有找到好且完整的 LWJGL 教程，连官方的教程都写得很烂。于是又开始用 C++ 来直接写 OpenGL 了···</p>
@@ -247,7 +249,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-22 11:13:40" itemprop="dateModified" datetime="2020-10-22T11:13:40+08:00">2020-10-22</time>
+                <time title="修改时间：2020-10-22 12:00:03" itemprop="dateModified" datetime="2020-10-22T12:00:03+08:00">2020-10-22</time>
               </span>
 
           
@@ -261,7 +263,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="访问者模式"><a href="#访问者模式" class="headerlink" title="访问者模式"></a>访问者模式</h2><p>违反了 <em>迪米特法则</em> 和 <em>依赖倒转原则</em> 的奇怪模式，目的是将数据结构与数据操作分离，降低耦合性，但没有将访问主体与访问者解耦。这部分的解耦交给其他的设计模式。</p>
+          <a id="more"></a>
+
+<h2 id="访问者模式"><a href="#访问者模式" class="headerlink" title="访问者模式"></a>访问者模式</h2><p>违反了 <em>迪米特法则</em> 和 <em>依赖倒转原则</em> 的奇怪模式，目的是将数据结构与数据操作分离，降低耦合性，但没有将访问主体与访问者解耦。这部分的解耦交给其他的设计模式。</p>
 <blockquote>
 <p>访问者只需要关心我访问了什么，这给我来带了什么样的影响。被访问的只需要关心是谁访问了我，给我带来了什么影响。他们之间是如何产生这样访问的，并不需要关心。</p>
 <p>by chaos</p>
@@ -379,7 +383,7 @@ Observer
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-22 11:12:47" itemprop="dateModified" datetime="2020-10-22T11:12:47+08:00">2020-10-22</time>
+                <time title="修改时间：2020-10-22 11:59:24" itemprop="dateModified" datetime="2020-10-22T11:59:24+08:00">2020-10-22</time>
               </span>
 
           
@@ -394,53 +398,14 @@ Observer
 
       
           <p>两者都用于处理类数量爆炸的情况。</p>
-<h2 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h2><p>将抽象类作为具体实现类与功能接口的桥。</p>
-<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>当类需要在多个方面进行拓展时，使用桥接模式。<br></p>
-<h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><pre><code>Bridged Pattern:
-
-Product       Dimension       ConcreteDimension
-   |              |                   |
-   | &lt;&gt;---------- | &lt;|............... |
-   |              |                   |
-   |          Dimension               |
-   |                                  |
-   |       ConcretePruduct            |
-   |              |                   |
-   | &lt;|---------- | &lt;&gt;--------------- |
-   |              |                   |
-Product    ConcretePruduct    ConcreteDimension</code></pre>
-<p><em>ConcreteProduct</em> 与 <em>ConcreteDimension</em> 根据具体情况，可能是组合或者聚合关系。</p>
-<br>
-
-<h2 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h2><p>众所周知，青蛙不会飞。但是我们可以用 <em>FrogFlyDecorator</em> 让青蛙飞起来。<br></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Frog flyFrog = <span class="keyword">new</span> FrogFlyDecorator(frog);</span><br></pre></td></tr></table></figure>
-
-<h3 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h3><p>为产品添加新的功能时，使用装饰器模式。<br><br>在装饰器中为产品添加新功能。</p>
-<h3 id="类图-1"><a href="#类图-1" class="headerlink" title="类图"></a>类图</h3><pre><code>Decorator Pattern:
-
-Product    Decorator    ConcreteDecorator
-   |           |                |
-   | &lt;|----&lt;*&gt; | &lt;|------------ |
-   |           |                |
-   |       Decoretor    ConcreteDecorator
-   |
-   |       ConcretePruduct
-   |              |
-   | &lt;|---------- |
-   |              |
-Product    ConcretePruduct</code></pre>
-<p><em>Decorator</em> 泛化并组合了一个抽象的 <em>Product</em> ， <em>ConcreteDecorator</em> 为 <em>Product</em> 添加新功能或修改原有功能。<br><br>泛化的目的是为了能嵌套，做到类似这样的效果：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> FrogTalk(</span><br><span class="line">    <span class="keyword">new</span> FrogRunDecorator(</span><br><span class="line">        <span class="keyword">new</span> FrogFlyDecorator(frog)));</span><br></pre></td></tr></table></figure>
-
-<p>这是一只能说话能跑步能飞的青蛙。</p>
-<p>手抓饼加料的过程可以同理。</p>
-<br>
-
-<h3 id="二者区别"><a href="#二者区别" class="headerlink" title="二者区别"></a>二者区别</h3><ol>
-<li>桥接模式将相关的事物组合或聚合在一起；装饰器模式为已经存在的事物添加新的功能。<br></li>
-<li>桥接模式中的产品实现类与接口实现类继承自不同的类/接口，没有主次之分；装饰器模式的产品实现类与装饰器类都继承自抽象产品类，产品为主，装饰器为次。<br></li>
-</ol>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/22/Design-pattern-Bridge-pattern-and-Decorator-pattern/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -490,7 +455,7 @@ Product    ConcretePruduct</code></pre>
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-22 11:24:33" itemprop="dateModified" datetime="2020-10-22T11:24:33+08:00">2020-10-22</time>
+                <time title="修改时间：2020-10-22 12:00:22" itemprop="dateModified" datetime="2020-10-22T12:00:22+08:00">2020-10-22</time>
               </span>
 
           
@@ -504,7 +469,9 @@ Product    ConcretePruduct</code></pre>
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>来了。<br><br></p>
+          <a id="more"></a>
+
+<p>来了。<br><br></p>
 <h2 id="折磨人的房子"><a href="#折磨人的房子" class="headerlink" title="折磨人的房子"></a>折磨人的房子</h2><p>整理宿舍的时候，一个女老师来建议说到外面租宿舍。也是，毕竟这里太挤了，不到二十平的地方塞了两个上下铺。所以和新认识的两个室友出去找房子了。<br><br>五八同城···这东西真没用过，没想到竟然还能用来找房子。看了好多家，都在福师大的南边，太远了。看了一家福师大东边的什么眉心园，走了半天，是红砖房，房间也不够大，白跑一趟。<br><br>嗐，电动车是真的骑不来，感觉太怪了。<br><br>一路上一个中介公司的一直在微信和我沟通，帮我找房子···找了好多地方，最后他带我们到了万福中心北边的蔗洲滨江苑的一间，和其他人合租，还行。<br><br>我们租了一间卧室，蛮大的，把中间最大的床挪一挪然后再塞两张折叠床就可以了。这间的环境也比培训学校这边的宿舍好多了。<br><br>最后定下来 1100 / 月，水费 30 / 人 / 月，电费一度一块钱。这次交了 3300 + 200 + 35 * 6 + 550 ，分别是押金与首月租金，预缴水电费，这个月剩下的 9 天免去 3 天后的租金，中介的佣金。中介的佣金有点贵啊，月租金的 50% ，还好只交一次。回来后又买了床垫被芯竹席等，前后两次生活用品购买加起来花了 271 。<br><br>明天开始搬过去，虽然刚买的折叠床还没到···先过去再说吧。刚来福州第一件事就是再搬一次家，绝了。就这导致今天走了 1.5w+ 的步数。<br><br><br></p>
 <h2 id="培训学校"><a href="#培训学校" class="headerlink" title="培训学校"></a>培训学校</h2><p>一直以为廖老师是女的，没想到是男的。<br><br>万福中心二楼的面不好吃。<br><br>地址在万福中心2栋6层。感觉也不是很大，没多少班级。<br><br>早上9点到中午12点，下午14点到几点我给忘了。18点半到21点晚自习。周六白天也有自习，周六下午和周日放假。出行需要汇报班主任。<br></p>
 
@@ -557,7 +524,7 @@ Product    ConcretePruduct</code></pre>
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-22 11:13:06" itemprop="dateModified" datetime="2020-10-22T11:13:06+08:00">2020-10-22</time>
+                <time title="修改时间：2020-10-22 11:59:35" itemprop="dateModified" datetime="2020-10-22T11:59:35+08:00">2020-10-22</time>
               </span>
 
           
@@ -571,7 +538,9 @@ Product    ConcretePruduct</code></pre>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h2><p>核心角色：</p>
+          <a id="more"></a>
+
+<h2 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h2><p>核心角色：</p>
 <ol>
 <li>产品</li>
 <li>抽象建造者</li>
@@ -652,7 +621,7 @@ Builder      ConcreteBuilder      Client</code></pre>
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-22 11:14:01" itemprop="dateModified" datetime="2020-10-22T11:14:01+08:00">2020-10-22</time>
+                <time title="修改时间：2020-10-22 11:59:58" itemprop="dateModified" datetime="2020-10-22T11:59:58+08:00">2020-10-22</time>
               </span>
 
           
@@ -669,75 +638,14 @@ Builder      ConcreteBuilder      Client</code></pre>
           <blockquote>
 <p>“敲过代码，……我便考你一考。设计模式的单例，怎样写的？” <br><br>“对呀对呀！……单例有八种写法，你知道么？”</p>
 </blockquote>
-<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p>某些类在只需要一个实例的时候，就可以用到单例模式。这个实例由类来保存。</p>
-<p>注意点：</p>
-<ol>
-<li>有且只有一个实例。</li>
-<li>这个实例由类自己创建。</li>
-<li>可以让外部使用到这个类。</li>
-</ol>
-<p>所以一般：</p>
-<ol>
-<li>将唯一的实例作为静态成员。</li>
-<li>将构造函数私有化，禁止外部调用构造函数。</li>
-</ol>
-<hr>
-<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ol>
-<li>频繁创建和销毁的对象</li>
-<li>大对象</li>
-<li>工具类</li>
-<li>频繁访问数据库或文件的对象</li>
-</ol>
-<hr>
-<h2 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h2><p>饿汉式的单例类实例在类被加载的时候实例化。 <br><br>饿汉式的实例是严格加载的。</p>
-<br>
-
-<h3 id="静态实例化"><a href="#静态实例化" class="headerlink" title="静态实例化"></a>静态实例化</h3><p>直接实例化：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>或者在静态代码块中实例化：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h2><p>懒汉式的单例类实例在首次调用 <em>getInstance</em> 方法时实例化。<br><br>懒汉式的实例是惰性加载的。</p>
-<br>
-
-<h3 id="线程不安全的加载"><a href="#线程不安全的加载" class="headerlink" title="线程不安全的加载"></a>线程不安全的加载</h3><p>在 <em>getInstance</em> 方法内加载：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这种方式会在多线程场景中不安全。</p>
-<br>
-
-<h3 id="线程安全但效率不高的加载"><a href="#线程安全但效率不高的加载" class="headerlink" title="线程安全但效率不高的加载"></a>线程安全但效率不高的加载</h3><p>将方法声明为 <em>synchronized</em> ：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可行，但效率不高，每次调用方法都要等前一个线程结束调用。</p>
-<br>
-
-<h3 id="一个线程不安全的错误写法"><a href="#一个线程不安全的错误写法" class="headerlink" title="一个线程不安全的错误写法"></a>一个线程不安全的错误写法</h3><p>如果将 <em>sychronized</em> 声明在 if 的部分的话：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">            <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>逻辑有问题，这种写法并不是线程安全的。</p>
-<br>
-
-<h3 id="双重检查"><a href="#双重检查" class="headerlink" title="双重检查"></a>双重检查</h3><p>进行了两次非空判断，看起来有点蠢，但实际上很精明且好用：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>不要</strong> 为 <em>instance</em> 加上关键词 <em>volatile</em> 。这样会降低程序的性能。</p>
-<br>
-
-<h3 id="把实例存到静态内部类里"><a href="#把实例存到静态内部类里" class="headerlink" title="把实例存到静态内部类里"></a>把实例存到静态内部类里</h3><p>外部类通过方法来拿到内部类的外部类实例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonInstance</span> </span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> SingletonInstance.INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>JVM 的类加载过程是线程安全的，这种方法就是利用了这一机制来实现线程安全的。</p>
-<br>
-
-<h3 id="枚举类特性"><a href="#枚举类特性" class="headerlink" title="枚举类特性"></a>枚举类特性</h3><p>用到了枚举类的特性：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton &#123;</span><br><span class="line">    INSTANCE;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// method</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>就离谱。线程安全，且能防止通过反序列化来重新创建对象。<br><br>感觉像是 C++ 中的 enumHack ……</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/16/Design-pattern-Singleton-pattern/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -787,7 +695,7 @@ Builder      ConcreteBuilder      Client</code></pre>
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-22 11:09:34" itemprop="dateModified" datetime="2020-10-22T11:09:34+08:00">2020-10-22</time>
+                <time title="修改时间：2020-10-22 12:02:02" itemprop="dateModified" datetime="2020-10-22T12:02:02+08:00">2020-10-22</time>
               </span>
 
           
@@ -801,7 +709,9 @@ Builder      ConcreteBuilder      Client</code></pre>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="六种关系"><a href="#六种关系" class="headerlink" title="六种关系"></a>六种关系</h2><ol>
+          <a id="more"></a>
+
+<h2 id="六种关系"><a href="#六种关系" class="headerlink" title="六种关系"></a>六种关系</h2><ol>
 <li>依赖关系</li>
 <li>泛化关系</li>
 <li>实现关系</li>
@@ -908,7 +818,7 @@ C &lt;*&gt;-- Y</code></pre>
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-22 11:11:21" itemprop="dateModified" datetime="2020-10-22T11:11:21+08:00">2020-10-22</time>
+                <time title="修改时间：2020-10-22 11:59:40" itemprop="dateModified" datetime="2020-10-22T11:59:40+08:00">2020-10-22</time>
               </span>
 
           
@@ -922,7 +832,9 @@ C &lt;*&gt;-- Y</code></pre>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="七条原则"><a href="#七条原则" class="headerlink" title="七条原则"></a>七条原则</h2><ol>
+          <a id="more"></a>
+
+<h2 id="七条原则"><a href="#七条原则" class="headerlink" title="七条原则"></a>七条原则</h2><ol>
 <li>开闭原则</li>
 <li>单一职责原则</li>
 <li>接口隔离原则</li>
@@ -1025,7 +937,7 @@ C &lt;*&gt;-- Y</code></pre>
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-22 11:24:38" itemprop="dateModified" datetime="2020-10-22T11:24:38+08:00">2020-10-22</time>
+                <time title="修改时间：2020-10-22 12:00:19" itemprop="dateModified" datetime="2020-10-22T12:00:19+08:00">2020-10-22</time>
               </span>
 
           
@@ -1039,7 +951,9 @@ C &lt;*&gt;-- Y</code></pre>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="感谢黑老板送的盐"><a href="#感谢黑老板送的盐" class="headerlink" title="感谢黑老板送的盐"></a>感谢黑老板送的盐</h2><p>老板大气，老板身体健康。</p>
+          <a id="more"></a>
+
+<h2 id="感谢黑老板送的盐"><a href="#感谢黑老板送的盐" class="headerlink" title="感谢黑老板送的盐"></a>感谢黑老板送的盐</h2><p>老板大气，老板身体健康。</p>
 <p>昨天晚上看了 Michael 直播的 <a target="_blank" rel="noopener" href="https://space.bilibili.com/30620024">火火老师</a> 的独立游戏 demo 试玩，真的神仙···同样也是从 Michael 的小狐狸开始学的，八个半月做出来了 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pD4y1o71r">深沉之火的 domo </a>，太强了。</p>
 <p>之后听火火老师在麦群里提到了 <strong>盐与避难所</strong> 这个游戏，今天在看了一下散老师的实况，哇， 2D 横板 动作 闯关 soul-like 要素齐全，很合胃口。一看 steam ， 60 块钱，好贵。在群里吐槽了一下没想到黑老板就直接送了我一个，绝了。</p>
 <p>再次感谢黑老板！（虽然我不一定有时间玩（小声））</p>
@@ -1140,7 +1054,7 @@ C &lt;*&gt;-- Y</code></pre>
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-22 11:08:06" itemprop="dateModified" datetime="2020-10-22T11:08:06+08:00">2020-10-22</time>
+                <time title="修改时间：2020-10-22 11:58:44" itemprop="dateModified" datetime="2020-10-22T11:58:44+08:00">2020-10-22</time>
               </span>
 
           
@@ -1154,26 +1068,15 @@ C &lt;*&gt;-- Y</code></pre>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="带参数类型数组的创建方式"><a href="#带参数类型数组的创建方式" class="headerlink" title="带参数类型数组的创建方式"></a>带参数类型数组的创建方式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Pair&lt;String, String&gt;[] table0 = <span class="keyword">new</span> Pair&lt;String, String&gt;[size];  <span class="comment">//Error</span></span><br><span class="line"></span><br><span class="line">Pair&lt;String, String&gt;[] table1 = (Pair&lt;String, String&gt;[]) <span class="keyword">new</span> Pair&lt;?, ?&gt;[size];   <span class="comment">//OK</span></span><br><span class="line">Pair&lt;String, String&gt;[] table2 = <span class="keyword">new</span> Pair[size];   <span class="comment">//OK</span></span><br><span class="line">Pair[] table3 = <span class="keyword">new</span> Pair[size];   <span class="comment">//OK</span></span><br><span class="line">ArrayList&lt;Pair&lt;String, String&gt;&gt; table1 = <span class="keyword">new</span> ArrayList&lt;&gt;(); <span class="comment">//OK</span></span><br></pre></td></tr></table></figure>
-<p>这类声明通常会伴随着 <code>unchecked</code> 警告出现，在声明前标注 <code>@SuppressWarnings(&quot;unchecked&quot;)</code> 可以取消警告。</p>
-<hr>
-<h2 id="有跟没有差不多的泛型"><a href="#有跟没有差不多的泛型" class="headerlink" title="有跟没有差不多的泛型"></a>有跟没有差不多的泛型</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings(&quot;unchecked&quot;)</span></span><br><span class="line">Pair&lt;String, String&gt;[] table = (Pair&lt;String, String&gt;[]) <span class="keyword">new</span> Pair&lt;?, ?&gt;[<span class="number">1</span>];</span><br><span class="line"><span class="comment">//table[0] = new Pair&lt;&gt;(1, 2);</span></span><br><span class="line">table[<span class="number">0</span>] = <span class="keyword">new</span> Pair(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">//1=2</span></span><br><span class="line">System.out.println(table[<span class="number">0</span>]);</span><br><span class="line"><span class="comment">//ClassCastExecption: Integer cannot be cast to String</span></span><br><span class="line">System.out.println(<span class="string">&quot;[&quot;</span> + table[<span class="number">0</span>].getKey() + <span class="string">&quot;:&quot;</span>+ table[<span class="number">0</span>].getValue());</span><br></pre></td></tr></table></figure>
-<p>这第 4 行和第 6 行不报错，就离谱。</p>
-<p>然后如果这样写的话，程序不会炸，而是我炸了。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Pair&lt;?, ?&gt;[] table = <span class="keyword">new</span> Pair&lt;?, ?&gt;[<span class="number">2</span>];</span><br><span class="line">table[<span class="number">0</span>] = <span class="keyword">new</span> Pair&lt;&gt;(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">table[<span class="number">1</span>] = <span class="keyword">new</span> Pair&lt;&gt;(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>);</span><br><span class="line"><span class="comment">//1=2</span></span><br><span class="line">System.out.println(table[<span class="number">0</span>]);</span><br><span class="line"><span class="comment">//[1:2]</span></span><br><span class="line">System.out.println(<span class="string">&quot;[&quot;</span> + table[<span class="number">0</span>].getKey() + <span class="string">&quot;:&quot;</span>+ table[<span class="number">0</span>].getValue() + <span class="string">&quot;]&quot;</span>);</span><br><span class="line"><span class="comment">//a=b</span></span><br><span class="line">System.out.println(table[<span class="number">1</span>]);</span><br><span class="line"><span class="comment">//[a:b]</span></span><br><span class="line">System.out.println(<span class="string">&quot;[&quot;</span> + table[<span class="number">1</span>].getKey() + <span class="string">&quot;:&quot;</span>+ table[<span class="number">1</span>].getValue() + <span class="string">&quot;]&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>无法理解， <em>table</em> 到底是什么类型？通配类型 <em>&lt;?&gt;</em> 这么邪门的吗？</p>
-<hr>
-<h2 id="Java-的泛型是假的泛型"><a href="#Java-的泛型是假的泛型" class="headerlink" title="Java 的泛型是假的泛型"></a>Java 的泛型是假的泛型</h2><p>有个东西叫类型擦除。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(T t)</span> </span>&#123; ... &#125;</span><br><span class="line">-&gt;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">(Object t)</span> </span>&#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> &lt;T extends Comparable&gt; <span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(T t)</span> </span>&#123; ... &#125;</span><br><span class="line">-&gt;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">(Comparable t)</span> </span>&#123; ... &#125;</span><br></pre></td></tr></table></figure>
-<p>这些东西是一样的。 <em>JVM</em> 中（也就是 <em>Java</em> 运行期间）是没有泛型的，全是 <em>Object</em> ！</p>
-<p><strong>所以 <em>Java</em> 的泛型在本质上其实就是 <em>Object 与其子类</em> 之间的强制类型转换。</strong></p>
-<p>这样也就能解释得通上面为什么一会儿报错一会儿不报错了。</p>
-<p>所以也有人说： <em>Java</em> 的泛型是假的泛型。</p>
-<hr>
-<h2 id="Java-泛型的用处"><a href="#Java-泛型的用处" class="headerlink" title="Java 泛型的用处"></a>Java 泛型的用处</h2><p>暂时想到的唯一用处：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;T extends I1 &amp; I2&gt; <span class="keyword">void</span>(T t) &#123; ... &#125;</span><br></pre></td></tr></table></figure>
-<p>在这种多接口约束（？我也不知道叫什么）的情况下， <em>T</em> 就有用了，能帮助检查参数类型错误。</p>
-
+          <p>稍微写了一些有泛型或者没泛型的东西，然后发现了一些离谱的地方……</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/08/Absurd-Java-Generics/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
