@@ -20,15 +20,21 @@
     var CONFIG = {"hostname":"tomotopieces.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Tomoto">
-<meta property="og:url" content="http://tomotopieces.github.io/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
+  <meta name="description" content="这是昨天在 Java 的资源文件读取方面遇到的坑。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-resources-file-path">
+<meta property="og:url" content="http://tomotopieces.github.io/2020/11/04/Java-resources-file-path/index.html">
 <meta property="og:site_name" content="Tomoto">
+<meta property="og:description" content="这是昨天在 Java 的资源文件读取方面遇到的坑。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-04T01:20:04.000Z">
+<meta property="article:modified_time" content="2020-11-04T01:51:28.365Z">
 <meta property="article:author" content="Tomoto">
+<meta property="article:tag" content="开发学习">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://tomotopieces.github.io/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+<link rel="canonical" href="http://tomotopieces.github.io/2020/11/04/Java-resources-file-path/">
 
 
 <script id="page-configurations">
@@ -36,12 +42,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: 环境搭建 | Tomoto</title>
+  <title>Java-resources-file-path | Tomoto</title>
   
 
 
@@ -142,71 +148,105 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">环境搭建
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tomotopieces.github.io/2020/11/04/Java-resources-file-path/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tomoto">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tomoto">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java-resources-file-path
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-11-04 09:20:04 / 修改时间：09:51:28" itemprop="dateCreated datePublished" datetime="2020-11-04T09:20:04+08:00">2020-11-04</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
-    </div>
+        <p>这是昨天在 Java 的资源文件读取方面遇到的坑。</p>
+<a id="more"></a>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<h2 id="先说结论"><a href="#先说结论" class="headerlink" title="先说结论"></a>先说结论</h2><p>如果在项目中使用资源文件，那么用 <code>Class.getResource(String) : URL</code> 或 <code>Class.getResourceAsStream(String) : InputStream</code> 方法来获取文件内容。</p>
+<h2 id="再说原因"><a href="#再说原因" class="headerlink" title="再说原因"></a>再说原因</h2><p>项目的资源文件，与在 IDE 运行中相比，<strong>导出成 jar 文件后，所在的路径会发生变化。</strong></p>
+<p>如果直接用 <code>Files.newInputStream(Paths.get(String path))</code> 的方法来获取资源文件内容，导出成 jar 文件后会因为路径不同而读取不到。</p>
+<h2 id="范例"><a href="#范例" class="headerlink" title="范例"></a>范例</h2><p>一个 maven 项目文件树：</p>
+<pre><code>- src
+  - main
+    - resources
+      - database.properties &lt;- the file want to read</code></pre>
+<p>不合理代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line"><span class="keyword">try</span> (InputStream in = Files.newInputStream(Paths.get(<span class="string">&quot;src/main/resources/database.properties&quot;</span>)) &#123;</span><br><span class="line">    props.load(in);</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">    logger.error(e.getMessage());</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-10-23T09:11:52+08:00"
-              content="2020-10-23">
-          10-23
-        </time>
-      </div>
+<p>更改后：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line"><span class="keyword">try</span> (InputStream in = [ClassName].class.getResourceAsStream(&quot;/database.properties&quot;)) &#123;</span><br><span class="line">    props.load(in);</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">    logger.error(e.getMessage());</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/10/23/MySQL-environment-setup/" itemprop="url">
-            <span itemprop="name">MySQL-环境搭建</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-09-26T12:56:41+08:00"
-              content="2020-09-26">
-          09-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/09/26/OpenGL-environment-setup/" itemprop="url">
-            <span itemprop="name">OpenGL-环境搭建</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
+<hr>
+<h2 id="特别鸣谢"><a href="#特别鸣谢" class="headerlink" title="特别鸣谢"></a>特别鸣谢</h2><ul>
+<li>Morgen_L</li>
+<li>sand</li>
+</ul>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/" rel="tag"># 开发学习</a>
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/26/Java-multithreading/" rel="prev" title="Java 多线程">
+      <i class="fa fa-chevron-left"></i> Java 多线程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2077/01/01/Welcome/" rel="next" title="Welcome">
+      Welcome <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
@@ -259,6 +299,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E8%AF%B4%E7%BB%93%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">先说结论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%8D%E8%AF%B4%E5%8E%9F%E5%9B%A0"><span class="nav-number">2.</span> <span class="nav-text">再说原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8C%83%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">范例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E5%88%AB%E9%B8%A3%E8%B0%A2"><span class="nav-number">4.</span> <span class="nav-text">特别鸣谢</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
